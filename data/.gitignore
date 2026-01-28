@@ -1,0 +1,4 @@
+# Extracted data files
+*.parquet
+*.csv
+*.xlsx

@@ -89,3 +89,8 @@ credentials.json
 logs/
 *.tmp
 *.temp
+
+# ===========================
+# Scratch/Test Files
+# ===========================
+scratch/

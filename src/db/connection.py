@@ -6,7 +6,7 @@ from typing import Generator
 
 import pandas as pd
 from dotenv import load_dotenv
-from sqlalchemy import create_engine, Engine
+from sqlalchemy import create_engine, Engine, text
 
 
 class DatabaseConnection:
@@ -68,4 +68,6 @@ class DatabaseConnection:
         Returns:
             pandas DataFrame with query results
         """
-        return pd.read_sql_query(query, self.engine, params=params)
+        if params:
+            return pd.read_sql_query(text(query), self.engine, params=params)
+        return pd.read_sql_query(query, self.engine)
