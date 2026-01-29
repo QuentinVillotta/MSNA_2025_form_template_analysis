@@ -17,15 +17,7 @@ def _():
     import plotly.express as px
     import plotly.graph_objects as go
     from pathlib import Path
-    import sys
-
-    # Add project root to path
-    project_root = Path.cwd()
-    if str(project_root) not in sys.path:
-        sys.path.insert(0, str(project_root))
-
-    from src.template import load_template
-    from src.indicator_bank import load_indicator_bank
+    import pickle
 
     mo.md("""
     # MSNA 2025: Template vs Indicator Bank Analysis
@@ -33,18 +25,42 @@ def _():
     **Objective**: Identify mismatches between Kobo form template and indicator bank 
     to improve HQ standardization process.
     """)
-    return Path, load_indicator_bank, load_template, mo, pd, px
+    return Path, mo, pd, pickle, px
 
 
 @app.cell
-def _(load_indicator_bank, load_template, mo, Path):
-    # Load data with fallback paths for WASM deployment
-    # Try files/ first (WASM export), then data/ (local development)
-    template_path = "files/kobo_form_template_MSNA_2025.xlsx" if Path("files/kobo_form_template_MSNA_2025.xlsx").exists() else "data/kobo_form_template_MSNA_2025.xlsx"
-    ib_path = "files/indicator_bank_MSNA_2025.xlsx" if Path("files/indicator_bank_MSNA_2025.xlsx").exists() else "data/indicator_bank_MSNA_2025.xlsx"
+def _(mo, Path, pickle):
+    # Load data from pickle files with fallback paths for WASM deployment
+    # Try files/ first (WASM export), then data/notebook_cache/ (local development)
     
-    template = load_template(template_path)
-    indicator_bank = load_indicator_bank(ib_path)
+    template_pkl_path = Path("files/template_data.pkl") if Path("files/template_data.pkl").exists() else Path("data/notebook_cache/template_data.pkl")
+    ib_pkl_path = Path("files/ib_data.pkl") if Path("files/ib_data.pkl").exists() else Path("data/notebook_cache/ib_data.pkl")
+    
+    # Load template data
+    with open(template_pkl_path, 'rb') as f:
+        template_data = pickle.load(f)
+    
+    # Create simple namespace objects to mimic the loader classes
+    class TemplateData:
+        def __init__(self, data):
+            self.survey = data['survey']
+            self.choices = data['choices']
+    
+    class IndicatorBankData:
+        def __init__(self, data):
+            self.data = data['data']
+            self._question_codes = data['question_codes']
+        
+        def get_question_codes(self):
+            return self._question_codes
+    
+    template = TemplateData(template_data)
+    
+    # Load indicator bank data
+    with open(ib_pkl_path, 'rb') as f:
+        ib_data_loaded = pickle.load(f)
+    
+    indicator_bank = IndicatorBankData(ib_data_loaded)
 
     # Define Kobo technical elements to exclude from analysis
     kobo_technical_types = ['begin_group', 'end_group', 'begin_repeat', 'end_repeat']

@@ -54,6 +54,13 @@ env/
 .jupyter/
 jupyter_notebook_config.py
 
+# ===========================
+# Marimo
+# ===========================
+__marimo__/
+.marimo.toml
+**/layouts/*.json
+
 
 # ===========================
 # IDE & Editors
@@ -94,3 +101,4 @@ logs/
 # Scratch/Test Files
 # ===========================
 scratch/
+data/notebook_cache/
