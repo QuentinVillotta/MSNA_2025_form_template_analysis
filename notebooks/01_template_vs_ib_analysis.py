@@ -669,5 +669,27 @@ def _(constraint_df, mo, skip_logic_df):
     return
 
 
+@app.cell
+def _(mo):
+    mo.md("""
+    ## Key Findings & Recommendations
+    
+    ### Critical Observations
+    
+    - **Over 100 template question names do not match indicators in the IB**, primarily affecting `calculate` and `text` type indicators
+    - **Nearly all Tier 1 questions match successfully**, indicating strong alignment on critical indicators
+    - **Typos create unnecessary mismatches** between files (e.g., `snfi_fds_sleeping_issue`, `snfi_fds_storing_issue`, `nut_ind_under5_sick_symptoms`, `nut_ind_under5_sick_location`)
+    - **Significant variation in match rates across themes and modules**, suggesting inconsistent implementation practices
+    - **Naming inconsistencies between template and IB** for themes and modules complicate cross-referencing
+    - **Missing relevance/skip logic and constraints in template** despite being defined in IB, potentially affecting data quality
+    - **Choice structure in IB lacks standardization**, preventing systematic comparison with template form choices
+    
+    ### Strategic Recommendations
+    
+    A broader discussion is needed on ensuring better conformity between the two documents. More importantly, exploring **automated generation of the Form from the IB (or vice versa)** could eliminate duplication and manual errors inherent in maintaining parallel documents.
+    """)
+    return
+
+
 if __name__ == "__main__":
     app.run()
