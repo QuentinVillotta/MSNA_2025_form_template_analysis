@@ -33,14 +33,18 @@ def _():
     **Objective**: Identify mismatches between Kobo form template and indicator bank 
     to improve HQ standardization process.
     """)
-    return load_indicator_bank, load_template, mo, pd, px
+    return Path, load_indicator_bank, load_template, mo, pd, px
 
 
 @app.cell
-def _(load_indicator_bank, load_template, mo):
-    # Load data
-    template = load_template()
-    indicator_bank = load_indicator_bank()
+def _(load_indicator_bank, load_template, mo, Path):
+    # Load data with fallback paths for WASM deployment
+    # Try files/ first (WASM export), then data/ (local development)
+    template_path = "files/kobo_form_template_MSNA_2025.xlsx" if Path("files/kobo_form_template_MSNA_2025.xlsx").exists() else "data/kobo_form_template_MSNA_2025.xlsx"
+    ib_path = "files/indicator_bank_MSNA_2025.xlsx" if Path("files/indicator_bank_MSNA_2025.xlsx").exists() else "data/indicator_bank_MSNA_2025.xlsx"
+    
+    template = load_template(template_path)
+    indicator_bank = load_indicator_bank(ib_path)
 
     # Define Kobo technical elements to exclude from analysis
     kobo_technical_types = ['begin_group', 'end_group', 'begin_repeat', 'end_repeat']
