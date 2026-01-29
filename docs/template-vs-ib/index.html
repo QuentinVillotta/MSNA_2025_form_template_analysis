@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-B2ootaw-.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-CxL0S8W7.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-D9fedIX3.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-BTCkDNvf.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-DU3aDxX5.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-CLVRCuM9.ttf" as="font" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>01 template vs ib analysis</title>
+    <script type="module" crossorigin src="./assets/index-BI2D29sc.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-BW0IMuFq.js">
+    <link rel="modulepreload" crossorigin href="./assets/hotkeys-uKX61F1_.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-BLUna9fQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-Cl9k9ZmS.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-DzliDDTm.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-C8wT63Va.js">
+    <link rel="modulepreload" crossorigin href="./assets/_Uint8Array-BGESiCQL.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-CrRUCOBw.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-D0MtrJOx.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-C1rgT0yh.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-BGmjiNul.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-DeeZ7FnK.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-DN_bIXfG.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-DAnNhy3O.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-COkmyg1v.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-B8cGZzP5.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-C9fstfnp.js">
+    <link rel="modulepreload" crossorigin href="./assets/Combination-D1TsGrBC.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-9PZrU2e0.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CBrDuocE.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-CW2xpJ57.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-CrAQug3q.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-D9lTzMzP.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-CvjcEpZC.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-Bzf3rpev.js">
+    <link rel="modulepreload" crossorigin href="./assets/_getTag-BWqNuuwU.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseIsEqual-Cz9Tt_-E.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-DlWF5OMa.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-C6yE60hi.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFor-Duhs3RiJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-BBX6ug-N.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-Cg4WLWh2.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-Czt8B2GX.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-Bkp4R3bQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-DzyBMRsy.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-CENq_7Pd.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-ClFZlR7U.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-B3BENoUa.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-C0HaHO6a.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BGkTcW3U.js">
+    <link rel="modulepreload" crossorigin href="./assets/toString-DlRqgfqz.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasUnicode-zBEpxwYe.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-CmDXEyIC.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-EAuSVK-5.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-BSVRc0kJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-CTiSlR1m.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-BmAOeMOK.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-DDa-hVe3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CAcX026F.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DKNOF5xd.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CI6_zMIl.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BVf1IY4_.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Cq_4nPfh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CVj-_Iiz.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-HGZzCB0y.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-RKnr9SNh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BuhT82Xx.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-0ac7Aukl.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-5JckKRQn.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-Bj40p_Np.js">
+    <link rel="modulepreload" crossorigin href="./assets/_arrayReduce-bZBYsK-u.js">
+    <link rel="modulepreload" crossorigin href="./assets/type-BdyvjzTI.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseProperty-DuoFhI7N.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-6sUe0ZdD.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-BbFlGgjv.js">
+    <link rel="modulepreload" crossorigin href="./assets/toInteger-CDcO32Gx.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-CaVvnK_o.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-CwSdzVhm.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-CmJW_FeD.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-C7JBxSzd.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-Czc5z_04.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-RldLPyJs.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-jcHA5geR.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-CF5DtF1E.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-em3gna-v.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-C9_R_vlY.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-DD7JA3RM.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-BAYdLMF_.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-D8ks3oPN.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-C2LPFxyv.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-Bkl2Yfmh.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-BZvZlZQZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-D7bPw7Fz.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-CQd4MZr5.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-BEdExd6A.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-CqEd11Di.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-BP4_BZLr.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-DNmjkr65.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-CCq9qyVG.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-B8vBQnkH.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-DAK6volb.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-DRhpWiOq.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-gBVL4NN-.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-jWsqdLn1.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-C1czjtp7.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-BJsT6vfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-KGgBDCvb.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-Dr2G5gxJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/katex-dFZM4X_7.js">
+    <link rel="modulepreload" crossorigin href="./assets/marked.esm-BZNXs5FA.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-OGVTOU66-DQphfHw1.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-DjqhqmES.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D0NgYwYf.js">
+    <link rel="modulepreload" crossorigin href="./assets/command-B1zRJT1a.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-DtnzNVk-.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-DNnhJ0Gs.js">
+    <link rel="modulepreload" crossorigin href="./assets/mode-CXc0VeQq.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-N-2faAGj.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-B4Nb8r0D.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-BatLo2vd.js">
+    <link rel="modulepreload" crossorigin href="./assets/tabs-CHiEPtZV.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-Dj1oqsrZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-CU-WWxnz.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-z7WpYca5.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-Cq4Yn1WZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-DtJ_484s.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-DhMN8sxe.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-DhzaK-Y1.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-CdsE1R40.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-C_slsU-7.js">
+    <link rel="modulepreload" crossorigin href="./assets/maps-s2pQkyf5.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-B9D0JO9U.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-lG8j6oqk.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-CV0QXb5P.js">
+    <link rel="modulepreload" crossorigin href="./assets/range-sshwVRcP.js">
+    <link rel="modulepreload" crossorigin href="./assets/capitalize-DQeWKRGx.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-BLx7B_us.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-DlwRx3jE.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-BnFXtaZZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/play-BJDBXApx.js">
+    <link rel="modulepreload" crossorigin href="./assets/chat-components-BQ_d4LQG.js">
+    <link rel="modulepreload" crossorigin href="./assets/isEmpty-DIxUV1UR.js">
+    <link rel="modulepreload" crossorigin href="./assets/circle-check-big-OIMTUpe6.js">
+    <link rel="modulepreload" crossorigin href="./assets/chat-display-ZS_L6G-P.js">
+    <link rel="modulepreload" crossorigin href="./assets/ai-model-dropdown-C-5PlP5A.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-BzTDKVab.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeleteCell-D-55qWAK.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-9QU2Dup7.js">
+    <link rel="modulepreload" crossorigin href="./assets/process-output-DN66BQYe.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-DtJQFQyD.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-CboCOq4o.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-D2_Kx6xF.js">
+    <link rel="modulepreload" crossorigin href="./assets/add-cell-with-ai-DEdol3w0.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-D42sFB6d.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-DxXFdbn8.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-qp_XZeSS.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-DZ--KOk1.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-C5jvDmuG.js">
+    <link rel="modulepreload" crossorigin href="./assets/toggle-D-5M3JI_.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-DPW2B3A9.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-CXQVxivL.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-DN0TMY36.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-CyLJYAfP.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-6FYvpjrm.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-B7ZqbY8M.js">
+    <link rel="modulepreload" crossorigin href="./assets/utilities.esm-CqQATX3k.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-DqdzWKrn.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAddCell-DveVmvs9.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-D9zAYqG9.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-CHesBJpY.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-Dr5fAkba.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-video-camera-CZUg-nFA.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-D5CL190S.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-CqyOmxjL.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-DzIuH-E_.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-DbW1_PHb.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-C-lF7BNB.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-DyJ8-Zz6.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-86WoveRM.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-GvygmcM1.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-81gQouTn.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-B42u_5hF.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-C638SUfx.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-FiXEquL2.js">
+    <link rel="modulepreload" crossorigin href="./assets/VisuallyHidden-B0mBEsSm.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-DydgU7lx.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFlatten-CLPh0yMf.js">
+    <link rel="modulepreload" crossorigin href="./assets/flatten-Buk63LQO.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-DeQioq0G.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-MBUyxNtK.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-DobaYJPt.js">
+    <link rel="modulepreload" crossorigin href="./assets/house-CncUa_LL.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-Din9uFKE.js">
+    <link rel="modulepreload" crossorigin href="./assets/settings-MTlHVxz3.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-leQTJTJJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-CbD0f2J6.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-dxSncdJD.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-jmgGt1lS.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-B7vuddcd.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-BI9O54ok.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    <marimo-code hidden="">%22%22%22MSNA%202025%20Template%20vs%20Indicator%20Bank%20Analysis.%0A%0AAnalysis%20of%20question%20code%20mismatches%20between%20Kobo%20form%20template%20and%20indicator%20bank%0Ato%20identify%20gaps%20in%20HQ%20process%20and%20improve%20template%20standardization.%0A%22%22%22%0A%0Aimport%20marimo%0A%0A__generated_with%20%3D%20%220.19.6%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22)%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20import%20pandas%20as%20pd%0A%20%20%20%20import%20plotly.express%20as%20px%0A%20%20%20%20import%20plotly.graph_objects%20as%20go%0A%20%20%20%20from%20pathlib%20import%20Path%0A%20%20%20%20import%20sys%0A%0A%20%20%20%20%23%20Add%20project%20root%20to%20path%0A%20%20%20%20project_root%20%3D%20Path.cwd()%0A%20%20%20%20if%20str(project_root)%20not%20in%20sys.path%3A%0A%20%20%20%20%20%20%20%20sys.path.insert(0%2C%20str(project_root))%0A%0A%20%20%20%20from%20src.template%20import%20load_template%0A%20%20%20%20from%20src.indicator_bank%20import%20load_indicator_bank%0A%0A%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%23%20MSNA%202025%3A%20Template%20vs%20Indicator%20Bank%20Analysis%0A%0A%20%20%20%20**Objective**%3A%20Identify%20mismatches%20between%20Kobo%20form%20template%20and%20indicator%20bank%20%0A%20%20%20%20to%20improve%20HQ%20standardization%20process.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%20load_indicator_bank%2C%20load_template%2C%20mo%2C%20pd%2C%20px%0A%0A%0A%40app.cell%0Adef%20_(load_indicator_bank%2C%20load_template%2C%20mo)%3A%0A%20%20%20%20%23%20Load%20data%0A%20%20%20%20template%20%3D%20load_template()%0A%20%20%20%20indicator_bank%20%3D%20load_indicator_bank()%0A%0A%20%20%20%20%23%20Define%20Kobo%20technical%20elements%20to%20exclude%20from%20analysis%0A%20%20%20%20kobo_technical_types%20%3D%20%5B'begin_group'%2C%20'end_group'%2C%20'begin_repeat'%2C%20'end_repeat'%5D%0A%20%20%20%20kobo_metadata_names%20%3D%20%5B'audit'%2C%20'start'%2C%20'end'%2C%20'today'%2C%20'deviceid'%5D%0A%0A%20%20%20%20%23%20Extract%20question%20codes%2C%20filtering%20out%20Kobo%20structural%20elements%20and%20metadata%0A%20%20%20%20all_template_names%20%3D%20template.survey%5B%0A%20%20%20%20%20%20%20%20(template.survey%5B'name'%5D.notna())%20%26%20%0A%20%20%20%20%20%20%20%20(~template.survey%5B'type'%5D.isin(kobo_technical_types))%20%26%0A%20%20%20%20%20%20%20%20(~template.survey%5B'name'%5D.isin(kobo_metadata_names))%0A%20%20%20%20%5D%5B'name'%5D.tolist()%0A%0A%20%20%20%20template_questions%20%3D%20set(all_template_names)%0A%20%20%20%20ib_questions%20%3D%20set(indicator_bank.get_question_codes())%0A%0A%20%20%20%20%23%20Calculate%20matches%0A%20%20%20%20matched%20%3D%20template_questions%20%26%20ib_questions%0A%20%20%20%20in_template_not_ib%20%3D%20template_questions%20-%20ib_questions%0A%20%20%20%20in_ib_not_template%20%3D%20ib_questions%20-%20template_questions%0A%0A%20%20%20%20mo.md(%22%23%23%20Match%20Analysis%22)%0A%20%20%20%20return%20(%0A%20%20%20%20%20%20%20%20ib_questions%2C%0A%20%20%20%20%20%20%20%20in_ib_not_template%2C%0A%20%20%20%20%20%20%20%20in_template_not_ib%2C%0A%20%20%20%20%20%20%20%20indicator_bank%2C%0A%20%20%20%20%20%20%20%20kobo_metadata_names%2C%0A%20%20%20%20%20%20%20%20kobo_technical_types%2C%0A%20%20%20%20%20%20%20%20matched%2C%0A%20%20%20%20%20%20%20%20template%2C%0A%20%20%20%20%20%20%20%20template_questions%2C%0A%20%20%20%20)%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20ib_questions%2C%0A%20%20%20%20in_ib_not_template%2C%0A%20%20%20%20in_template_not_ib%2C%0A%20%20%20%20matched%2C%0A%20%20%20%20pd%2C%0A%20%20%20%20template_questions%2C%0A)%3A%0A%20%20%20%20%23%20Global%20mismatch%20statistics%0A%20%20%20%20match_rate_ib%20%3D%20len(matched)%20%2F%20len(ib_questions)%20*%20100%0A%20%20%20%20match_rate_template%20%3D%20len(matched)%20%2F%20len(template_questions)%20*%20100%0A%0A%20%20%20%20%23%20Create%20clear%20summary%20table%0A%20%20%20%20summary_table%20%3D%20pd.DataFrame(%7B%0A%20%20%20%20%20%20%20%20'Document'%3A%20%5B'Template'%2C%20'Indicator%20Bank'%5D%2C%0A%20%20%20%20%20%20%20%20'Total%20Questions'%3A%20%5Blen(template_questions)%2C%20len(ib_questions)%5D%2C%0A%20%20%20%20%20%20%20%20'Matched'%3A%20%5Blen(matched)%2C%20len(matched)%5D%2C%0A%20%20%20%20%20%20%20%20'Matched%20%25'%3A%20%5Bf'%7Bmatch_rate_template%3A.1f%7D%25'%2C%20f'%7Bmatch_rate_ib%3A.1f%7D%25'%5D%2C%0A%20%20%20%20%20%20%20%20'Not%20Matched'%3A%20%5Blen(in_template_not_ib)%2C%20len(in_ib_not_template)%5D%2C%0A%20%20%20%20%20%20%20%20'Not%20Matched%20%25'%3A%20%5Bf'%7Blen(in_template_not_ib)%2Flen(template_questions)*100%3A.1f%7D%25'%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20f'%7Blen(in_ib_not_template)%2Flen(ib_questions)*100%3A.1f%7D%25'%5D%0A%20%20%20%20%7D)%0A%20%20%20%20return%20(summary_table%2C)%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20summary_table)%3A%0A%20%20%20%20mo.ui.table(summary_table%2C%20selection%3DNone)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20in_template_not_ib%2C%0A%20%20%20%20kobo_metadata_names%2C%0A%20%20%20%20kobo_technical_types%2C%0A%20%20%20%20mo%2C%0A%20%20%20%20template%2C%0A)%3A%0A%20%20%20%20%23%20Prepare%20mismatch%20export%20-%20questions%20in%20template%20but%20not%20in%20IB%0A%20%20%20%20base_cols%20%3D%20%5B'name'%2C%20'type'%2C%20'theme'%2C%20'module'%5D%0A%0A%20%20%20%20label_col_export%20%3D%20None%0A%20%20%20%20for%20col_export%20in%20template.survey.columns%3A%0A%20%20%20%20%20%20%20%20if%20'label'%20in%20col_export.lower()%20and%20'english'%20in%20col_export.lower()%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20label_col_export%20%3D%20col_export%0A%20%20%20%20%20%20%20%20%20%20%20%20break%0A%0A%20%20%20%20cols_to_select%20%3D%20base_cols%20%2B%20(%5Blabel_col_export%5D%20if%20label_col_export%20else%20%5B%5D)%0A%0A%20%20%20%20mismatch_export%20%3D%20template.survey%5B%0A%20%20%20%20%20%20%20%20(template.survey%5B'name'%5D.notna())%20%26%20%0A%20%20%20%20%20%20%20%20(~template.survey%5B'type'%5D.isin(kobo_technical_types))%20%26%0A%20%20%20%20%20%20%20%20(~template.survey%5B'name'%5D.isin(kobo_metadata_names))%20%26%0A%20%20%20%20%20%20%20%20(template.survey%5B'name'%5D.isin(in_template_not_ib))%0A%20%20%20%20%5D%5Bcols_to_select%5D.copy()%0A%0A%20%20%20%20new_col_names%20%3D%20%5B'Question%20Code'%2C%20'Type'%2C%20'Theme'%2C%20'Module'%5D%0A%20%20%20%20if%20label_col_export%3A%0A%20%20%20%20%20%20%20%20new_col_names.append('Label')%0A%20%20%20%20mismatch_export.columns%20%3D%20new_col_names%0A%0A%20%20%20%20mismatch_button%20%3D%20mo.download(%0A%20%20%20%20%20%20%20%20data%3Dmismatch_export.to_csv(index%3DFalse).encode('utf-8')%2C%0A%20%20%20%20%20%20%20%20filename%3D'template_questions_not_in_ib.csv'%2C%0A%20%20%20%20%20%20%20%20label%3Df'Download%20Mismatches%20(%7Blen(mismatch_export)%7D%20questions)'%2C%0A%20%20%20%20%20%20%20%20mimetype%3D'text%2Fcsv'%0A%20%20%20%20)%0A%0A%20%20%20%20return%20(mismatch_button%2C)%0A%0A%0A%40app.cell%0Adef%20_(mismatch_button%2C%20mo)%3A%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%20%20%20%20%23%23%20Download%20Mismatch%20Data%0A%0A%20%20%20%20%20%20%20%20Questions%20in%20the%20template%20but%20not%20in%20the%20Indicator%20Bank.%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20mismatch_button%0A%20%20%20%20%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(in_ib_not_template%2C%20in_template_not_ib)%3A%0A%20%20%20%20%23%20Fuzzy%20matching%20analysis%20to%20detect%20near-matches%20(typos%2C%20plurals%2C%20etc.)%0A%20%20%20%20from%20rapidfuzz%20import%20fuzz%2C%20process%0A%0A%20%20%20%20%23%20Find%20close%20matches%20between%20template-only%20and%20IB-only%20question%20names%0A%20%20%20%20close_matches%20%3D%20%5B%5D%0A%0A%20%20%20%20for%20template_name%20in%20in_template_not_ib%3A%0A%20%20%20%20%20%20%20%20%23%20Find%20best%20matches%20in%20IB%0A%20%20%20%20%20%20%20%20matches%20%3D%20process.extract(%0A%20%20%20%20%20%20%20%20%20%20%20%20template_name%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20in_ib_not_template%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20scorer%3Dfuzz.ratio%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20limit%3D3%20%20%23%20Top%203%20matches%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20for%20ib_name%2C%20score%2C%20_%20in%20matches%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20score%20%3E%3D%2060%3A%20%20%23%20Minimum%20threshold%20to%20consider%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20close_matches.append(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'Template%20Name'%3A%20template_name%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'IB%20Name'%3A%20ib_name%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'Similarity%20Score'%3A%20score%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'Length%20Diff'%3A%20abs(len(template_name)%20-%20len(ib_name))%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D)%0A%0A%20%20%20%20%23%20Sort%20by%20similarity%20score%20descending%0A%20%20%20%20close_matches_sorted%20%3D%20sorted(close_matches%2C%20key%3Dlambda%20x%3A%20x%5B'Similarity%20Score'%5D%2C%20reverse%3DTrue)%0A%0A%20%20%20%20return%20(close_matches_sorted%2C)%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20%23%20Create%20interactive%20slider%20for%20similarity%20threshold%0A%20%20%20%20similarity_threshold%20%3D%20mo.ui.slider(%0A%20%20%20%20%20%20%20%20start%3D70%2C%0A%20%20%20%20%20%20%20%20stop%3D100%2C%0A%20%20%20%20%20%20%20%20step%3D1%2C%0A%20%20%20%20%20%20%20%20value%3D85%2C%0A%20%20%20%20%20%20%20%20label%3D%22Similarity%20Threshold%20(%25)%22%2C%0A%20%20%20%20%20%20%20%20show_value%3DTrue%0A%20%20%20%20)%0A%0A%20%20%20%20return%20(similarity_threshold%2C)%0A%0A%0A%40app.cell%0Adef%20_(close_matches_sorted%2C%20mo%2C%20pd%2C%20similarity_threshold)%3A%0A%20%20%20%20%23%20Filter%20matches%20based%20on%20threshold%0A%20%20%20%20filtered_matches%20%3D%20%5B%0A%20%20%20%20%20%20%20%20match%20for%20match%20in%20close_matches_sorted%20%0A%20%20%20%20%20%20%20%20if%20match%5B'Similarity%20Score'%5D%20%3E%3D%20similarity_threshold.value%0A%20%20%20%20%5D%0A%0A%20%20%20%20near_matches_df%20%3D%20pd.DataFrame(filtered_matches)%0A%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%20%20%20%20%23%23%20Near-Match%20Detection%20(Potential%20Typos%20%26%20Variants)%0A%0A%20%20%20%20%20%20%20%20Analysis%20of%20question%20names%20that%20are%20similar%20but%20not%20identical%20between%20Template%20and%20IB.%0A%20%20%20%20%20%20%20%20This%20helps%20identify%20potential%20typos%2C%20plurals%2C%20or%20naming%20inconsistencies.%0A%0A%20%20%20%20%20%20%20%20**Found%20%7Blen(near_matches_df)%7D%20potential%20near-matches%20at%20current%20threshold.**%0A%0A%20%20%20%20%20%20%20%20Adjust%20the%20similarity%20threshold%20to%20fine-tune%20detection%3A%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20similarity_threshold%2C%0A%20%20%20%20%20%20%20%20mo.ui.table(near_matches_df%2C%20selection%3DNone)%20if%20len(near_matches_df)%20%3E%200%20else%20mo.md(%22*No%20near-matches%20found%20at%20this%20threshold.*%22)%0A%20%20%20%20%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(kobo_metadata_names%2C%20kobo_technical_types%2C%20matched%2C%20mo%2C%20px%2C%20template)%3A%0A%20%20%20%20%23%20Match%2Fmismatch%20breakdown%20by%20question%20type%0A%20%20%20%20%23%20Get%20all%20questions%20with%20their%20types%2C%20filtering%20out%20Kobo%20structural%20elements%20and%20metadata%0A%20%20%20%20template_with_type%20%3D%20template.survey%5B%0A%20%20%20%20%20%20%20%20(template.survey%5B'name'%5D.notna())%20%26%20%0A%20%20%20%20%20%20%20%20(~template.survey%5B'type'%5D.isin(kobo_technical_types))%20%26%0A%20%20%20%20%20%20%20%20(~template.survey%5B'name'%5D.isin(kobo_metadata_names))%0A%20%20%20%20%5D%5B%5B'name'%2C%20'type'%5D%5D.copy()%0A%0A%20%20%20%20%23%20Classify%20each%20question%0A%20%20%20%20template_with_type%5B'match_status'%5D%20%3D%20template_with_type%5B'name'%5D.apply(%0A%20%20%20%20%20%20%20%20lambda%20x%3A%20'Matched'%20if%20x%20in%20matched%20else%20'Not%20in%20IB'%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20Count%20by%20type%20and%20status%0A%20%20%20%20type_analysis%20%3D%20template_with_type.groupby(%5B'type'%2C%20'match_status'%5D).size().reset_index(name%3D'count')%0A%20%20%20%20type_pivot%20%3D%20type_analysis.pivot(index%3D'type'%2C%20columns%3D'match_status'%2C%20values%3D'count').fillna(0).astype(int)%0A%0A%20%20%20%20%23%20Calculate%20totals%20and%20percentages%0A%20%20%20%20type_pivot%5B'Total'%5D%20%3D%20type_pivot.sum(axis%3D1)%0A%20%20%20%20if%20'Matched'%20in%20type_pivot.columns%3A%0A%20%20%20%20%20%20%20%20type_pivot%5B'Match%20%25'%5D%20%3D%20(type_pivot%5B'Matched'%5D%20%2F%20type_pivot%5B'Total'%5D%20*%20100).round(1)%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20type_pivot%5B'Match%20%25'%5D%20%3D%200.0%0A%0A%20%20%20%20%23%20Sort%20by%20mismatch%20descending%20(questions%20not%20in%20IB%20at%20the%20top)%0A%20%20%20%20if%20'Not%20in%20IB'%20in%20type_pivot.columns%3A%0A%20%20%20%20%20%20%20%20type_pivot%20%3D%20type_pivot.sort_values('Not%20in%20IB'%2C%20ascending%3DFalse).reset_index()%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20type_pivot%20%3D%20type_pivot.sort_values('Total'%2C%20ascending%3DFalse).reset_index()%0A%0A%20%20%20%20%23%20Prepare%20data%20for%20horizontal%20barplot%20(all%20types%2C%20not%20limited%20to%20top%2015)%0A%20%20%20%20type_plot_data%20%3D%20type_pivot.melt(%0A%20%20%20%20%20%20%20%20id_vars%3D%5B'type'%2C%20'Total'%2C%20'Match%20%25'%5D%2C%0A%20%20%20%20%20%20%20%20value_vars%3D%5Bcol%20for%20col%20in%20type_pivot.columns%20if%20col%20in%20%5B'Matched'%2C%20'Not%20in%20IB'%5D%5D%2C%0A%20%20%20%20%20%20%20%20var_name%3D'Status'%2C%0A%20%20%20%20%20%20%20%20value_name%3D'Count'%0A%20%20%20%20)%0A%0A%20%20%20%20fig_type%20%3D%20px.bar(%0A%20%20%20%20%20%20%20%20type_plot_data%2C%0A%20%20%20%20%20%20%20%20x%3D'Count'%2C%0A%20%20%20%20%20%20%20%20y%3D'type'%2C%0A%20%20%20%20%20%20%20%20color%3D'Status'%2C%0A%20%20%20%20%20%20%20%20orientation%3D'h'%2C%0A%20%20%20%20%20%20%20%20text%3D'Count'%2C%0A%20%20%20%20%20%20%20%20title%3D'Template%20Question%20Names%3A%20Match%20vs%20Mismatch%20with%20Indicator%20Bank%20by%20Question%20Type'%2C%0A%20%20%20%20%20%20%20%20barmode%3D'stack'%2C%0A%20%20%20%20%20%20%20%20color_discrete_map%3D%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20'Matched'%3A%20'%232ecc71'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Not%20in%20IB'%3A%20'%23e74c3c'%0A%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%20%20hover_data%3D%5B'Match%20%25'%5D%0A%20%20%20%20)%0A%20%20%20%20fig_type.update_traces(texttemplate%3D'%25%7Btext%7D'%2C%20textposition%3D'inside')%0A%20%20%20%20fig_type.update_layout(height%3D800%2C%20yaxis%3D%7B'categoryorder'%3A%20'total%20ascending'%7D)%0A%0A%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%23%23%20Match%20Analysis%20by%20Question%20Type%0A%0A%20%20%20%20Analysis%20of%20template%20question%20names%20compared%20to%20Indicator%20Bank%2C%20grouped%20by%20question%20type.%0A%20%20%20%20Kobo%20structural%20elements%20(begin_group%2C%20end_group%2C%20begin_repeat%2C%20end_repeat)%20are%20excluded.%0A%20%20%20%20Sorted%20by%20highest%20mismatch%20count.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%20fig_type%2C%20type_pivot%0A%0A%0A%40app.cell%0Adef%20_(fig_type%2C%20mo%2C%20type_pivot)%3A%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.ui.table(type_pivot%2C%20selection%3DNone)%2C%0A%20%20%20%20%20%20%20%20mo.ui.plotly(fig_type)%0A%20%20%20%20%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(in_ib_not_template%2C%20indicator_bank%2C%20matched%2C%20mo%2C%20pd)%3A%0A%20%20%20%20%23%20Tier%20analysis%0A%20%20%20%20ib_data%20%3D%20indicator_bank.data%0A%0A%20%20%20%20%23%20Get%20tier%20for%20matched%20and%20non-matched%20questions%0A%20%20%20%20tier_analysis%20%3D%20%5B%5D%0A%0A%20%20%20%20for%20tier%20in%20%5B'1'%2C%20'2'%2C%20'3'%5D%3A%0A%20%20%20%20%20%20%20%20tier_questions%20%3D%20ib_data%5Bib_data%5B'Tier%20(1%2C%202%20or%203)'%5D.astype(str)%20%3D%3D%20tier%5D%0A%20%20%20%20%20%20%20%20tier_question_codes%20%3D%20set(tier_questions%5B'Question%20code'%5D.dropna())%0A%0A%20%20%20%20%20%20%20%20tier_matched%20%3D%20tier_question_codes%20%26%20matched%0A%20%20%20%20%20%20%20%20tier_not_matched%20%3D%20tier_question_codes%20%26%20in_ib_not_template%0A%0A%20%20%20%20%20%20%20%20tier_analysis.append(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20'Tier'%3A%20f'Tier%20%7Btier%7D'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Total'%3A%20len(tier_question_codes)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Matched'%3A%20len(tier_matched)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Not%20in%20Template'%3A%20len(tier_not_matched)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Match%20Rate%20(%25)'%3A%20len(tier_matched)%20%2F%20len(tier_question_codes)%20*%20100%20if%20len(tier_question_codes)%20%3E%200%20else%200%0A%20%20%20%20%20%20%20%20%7D)%0A%0A%20%20%20%20tier_df%20%3D%20pd.DataFrame(tier_analysis)%0A%0A%20%20%20%20%23%20Get%20Tier%201%20questions%20not%20in%20template%0A%20%20%20%20tier1_not_in_template%20%3D%20ib_data%5B%0A%20%20%20%20%20%20%20%20(ib_data%5B'Tier%20(1%2C%202%20or%203)'%5D.astype(str)%20%3D%3D%20'1')%20%26%0A%20%20%20%20%20%20%20%20(ib_data%5B'Question%20code'%5D.isin(in_ib_not_template))%0A%20%20%20%20%5D%5B%5B'Question%20code'%2C%20'Sector%2FTheme'%2C%20'Module'%2C%20'Indicator'%5D%5D.copy()%0A%0A%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%23%23%20Analysis%20by%20Tier%0A%0A%20%20%20%20Breakdown%20of%20question%20matches%20by%20priority%20tier%20(1%3Dcritical%2C%202%3Dimportant%2C%203%3Doptional).%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%20ib_data%2C%20tier1_not_in_template%2C%20tier_df%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20tier1_not_in_template%2C%20tier_df)%3A%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.ui.table(tier_df%2C%20selection%3DNone)%2C%0A%20%20%20%20%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%20%20%20%20%23%23%23%20Tier%201%20Questions%20Not%20in%20Template%20(%7Blen(tier1_not_in_template)%7D%20critical%20questions)%0A%0A%20%20%20%20%20%20%20%20These%20critical%20questions%20are%20missing%20from%20the%20template.%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20mo.ui.table(tier1_not_in_template%2C%20selection%3DNone)%0A%20%20%20%20%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(ib_data%2C%20in_ib_not_template%2C%20matched%2C%20pd)%3A%0A%20%20%20%20%23%20Theme%20analysis%0A%20%20%20%20theme_analysis%20%3D%20%5B%5D%0A%0A%20%20%20%20for%20theme%20in%20ib_data%5B'Sector%2FTheme'%5D.dropna().unique()%3A%0A%20%20%20%20%20%20%20%20theme_questions%20%3D%20ib_data%5Bib_data%5B'Sector%2FTheme'%5D%20%3D%3D%20theme%5D%0A%20%20%20%20%20%20%20%20theme_question_codes%20%3D%20set(theme_questions%5B'Question%20code'%5D.dropna())%0A%0A%20%20%20%20%20%20%20%20theme_matched%20%3D%20theme_question_codes%20%26%20matched%0A%20%20%20%20%20%20%20%20theme_not_matched%20%3D%20theme_question_codes%20%26%20in_ib_not_template%0A%0A%20%20%20%20%20%20%20%20theme_analysis.append(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20'Theme'%3A%20theme%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Total'%3A%20len(theme_question_codes)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Matched'%3A%20len(theme_matched)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Not%20in%20Template'%3A%20len(theme_not_matched)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Match%20Rate%20(%25)'%3A%20len(theme_matched)%20%2F%20len(theme_question_codes)%20*%20100%20if%20len(theme_question_codes)%20%3E%200%20else%200%0A%20%20%20%20%20%20%20%20%7D)%0A%0A%20%20%20%20theme_df%20%3D%20pd.DataFrame(theme_analysis).sort_values('Not%20in%20Template'%2C%20ascending%3DFalse)%0A%20%20%20%20return%20(theme_df%2C)%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20px%2C%20theme_df)%3A%0A%20%20%20%20%23%20Theme%20visualization%20-%20top%2010%20themes%20with%20most%20mismatches%0A%20%20%20%20theme_top10%20%3D%20theme_df.head(10)%0A%0A%20%20%20%20fig_theme%20%3D%20px.bar(%0A%20%20%20%20%20%20%20%20theme_top10%2C%0A%20%20%20%20%20%20%20%20x%3D'Not%20in%20Template'%2C%0A%20%20%20%20%20%20%20%20y%3D'Theme'%2C%0A%20%20%20%20%20%20%20%20orientation%3D'h'%2C%0A%20%20%20%20%20%20%20%20text%3D'Not%20in%20Template'%2C%0A%20%20%20%20%20%20%20%20title%3D'Top%2010%20Themes%20with%20Most%20Questions%20Missing%20from%20Template'%2C%0A%20%20%20%20%20%20%20%20color%3D'Match%20Rate%20(%25)'%2C%0A%20%20%20%20%20%20%20%20color_continuous_scale%3D'RdYlGn'%0A%20%20%20%20)%0A%20%20%20%20fig_theme.update_traces(texttemplate%3D'%25%7Btext%7D'%2C%20textposition%3D'outside')%0A%20%20%20%20fig_theme.update_layout(height%3D500%2C%20yaxis%3D%7B'categoryorder'%3A%20'total%20ascending'%7D)%0A%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%20%20%20%20%23%23%20Analysis%20by%20Theme%0A%0A%20%20%20%20%20%20%20%20Mismatch%20breakdown%20by%20sector%2Ftheme%20-%20sorted%20by%20highest%20number%20of%20missing%20questions.%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20mo.ui.table(theme_df%2C%20selection%3DNone)%0A%20%20%20%20%5D)%0A%20%20%20%20return%20(fig_theme%2C)%0A%0A%0A%40app.cell%0Adef%20_(fig_theme%2C%20mo)%3A%0A%20%20%20%20mo.ui.plotly(fig_theme)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(ib_data%2C%20in_ib_not_template%2C%20matched%2C%20pd)%3A%0A%20%20%20%20%23%20Module%20analysis%0A%20%20%20%20module_analysis%20%3D%20%5B%5D%0A%0A%20%20%20%20for%20module%20in%20ib_data%5B'Module'%5D.dropna().unique()%3A%0A%20%20%20%20%20%20%20%20module_questions%20%3D%20ib_data%5Bib_data%5B'Module'%5D%20%3D%3D%20module%5D%0A%20%20%20%20%20%20%20%20module_question_codes%20%3D%20set(module_questions%5B'Question%20code'%5D.dropna())%0A%0A%20%20%20%20%20%20%20%20module_matched%20%3D%20module_question_codes%20%26%20matched%0A%20%20%20%20%20%20%20%20module_not_matched%20%3D%20module_question_codes%20%26%20in_ib_not_template%0A%0A%20%20%20%20%20%20%20%20module_theme%20%3D%20module_questions%5B'Sector%2FTheme'%5D.iloc%5B0%5D%20if%20len(module_questions)%20%3E%200%20else%20'Unknown'%0A%0A%20%20%20%20%20%20%20%20module_analysis.append(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20'Module'%3A%20module%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Theme'%3A%20module_theme%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Total'%3A%20len(module_question_codes)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Matched'%3A%20len(module_matched)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Not%20in%20Template'%3A%20len(module_not_matched)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Match%20Rate%20(%25)'%3A%20len(module_matched)%20%2F%20len(module_question_codes)%20*%20100%20if%20len(module_question_codes)%20%3E%200%20else%200%0A%20%20%20%20%20%20%20%20%7D)%0A%0A%20%20%20%20module_df%20%3D%20pd.DataFrame(module_analysis).sort_values('Not%20in%20Template'%2C%20ascending%3DFalse)%0A%20%20%20%20return%20(module_df%2C)%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20module_df%2C%20px)%3A%0A%20%20%20%20%23%20Module%20visualization%20-%20top%2015%20modules%20with%20most%20mismatches%0A%20%20%20%20module_top15%20%3D%20module_df.head(15)%0A%0A%20%20%20%20fig_module%20%3D%20px.bar(%0A%20%20%20%20%20%20%20%20module_top15%2C%0A%20%20%20%20%20%20%20%20x%3D'Not%20in%20Template'%2C%0A%20%20%20%20%20%20%20%20y%3D'Module'%2C%0A%20%20%20%20%20%20%20%20orientation%3D'h'%2C%0A%20%20%20%20%20%20%20%20text%3D'Not%20in%20Template'%2C%0A%20%20%20%20%20%20%20%20title%3D'Top%2015%20Modules%20with%20Most%20Questions%20Missing%20from%20Template'%2C%0A%20%20%20%20%20%20%20%20color%3D'Theme'%2C%0A%20%20%20%20%20%20%20%20hover_data%3D%5B'Total'%2C%20'Matched'%2C%20'Match%20Rate%20(%25)'%5D%0A%20%20%20%20)%0A%20%20%20%20fig_module.update_traces(texttemplate%3D'%25%7Btext%7D'%2C%20textposition%3D'outside')%0A%20%20%20%20fig_module.update_layout(height%3D600%2C%20yaxis%3D%7B'categoryorder'%3A%20'total%20ascending'%7D)%0A%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%20%20%20%20%23%23%20Analysis%20by%20Module%0A%0A%20%20%20%20%20%20%20%20Detailed%20breakdown%20by%20module%20-%20showing%20theme%20association%20and%20match%20rates.%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20mo.ui.table(module_df%2C%20selection%3DNone)%0A%20%20%20%20%5D)%0A%20%20%20%20return%20(fig_module%2C)%0A%0A%0A%40app.cell%0Adef%20_(fig_module%2C%20mo)%3A%0A%20%20%20%20mo.ui.plotly(fig_module)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(ib_data%2C%20matched%2C%20pd%2C%20template)%3A%0A%20%20%20%20%23%20Theme%2FModule%20mismatch%20analysis%20for%20matched%20questions%0A%20%20%20%20mismatch_analysis%20%3D%20%5B%5D%0A%0A%20%20%20%20for%20qcode_mismatch%20in%20matched%3A%0A%20%20%20%20%20%20%20%20tmpl_row%20%3D%20template.survey%5Btemplate.survey%5B'name'%5D%20%3D%3D%20qcode_mismatch%5D%0A%20%20%20%20%20%20%20%20if%20len(tmpl_row)%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20continue%0A%0A%20%20%20%20%20%20%20%20template_theme%20%3D%20tmpl_row%5B'theme'%5D.iloc%5B0%5D%20if%20pd.notna(tmpl_row%5B'theme'%5D.iloc%5B0%5D)%20else%20None%0A%20%20%20%20%20%20%20%20template_module%20%3D%20tmpl_row%5B'module'%5D.iloc%5B0%5D%20if%20'module'%20in%20tmpl_row.columns%20and%20pd.notna(tmpl_row%5B'module'%5D.iloc%5B0%5D)%20else%20None%0A%0A%20%20%20%20%20%20%20%20ind_row%20%3D%20ib_data%5Bib_data%5B'Question%20code'%5D%20%3D%3D%20qcode_mismatch%5D%0A%20%20%20%20%20%20%20%20if%20len(ind_row)%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20continue%0A%0A%20%20%20%20%20%20%20%20ib_theme%20%3D%20ind_row%5B'Sector%2FTheme'%5D.iloc%5B0%5D%20if%20pd.notna(ind_row%5B'Sector%2FTheme'%5D.iloc%5B0%5D)%20else%20None%0A%20%20%20%20%20%20%20%20ib_module%20%3D%20ind_row%5B'Module'%5D.iloc%5B0%5D%20if%20pd.notna(ind_row%5B'Module'%5D.iloc%5B0%5D)%20else%20None%0A%0A%20%20%20%20%20%20%20%20theme_mismatch%20%3D%20(template_theme%20!%3D%20ib_theme)%20and%20(template_theme%20is%20not%20None)%20and%20(ib_theme%20is%20not%20None)%0A%20%20%20%20%20%20%20%20module_mismatch%20%3D%20(template_module%20!%3D%20ib_module)%20and%20(template_module%20is%20not%20None)%20and%20(ib_module%20is%20not%20None)%0A%0A%20%20%20%20%20%20%20%20if%20theme_mismatch%20or%20module_mismatch%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20mismatch_analysis.append(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'Question%20Code'%3A%20qcode_mismatch%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'Template%20Theme'%3A%20template_theme%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'IB%20Theme'%3A%20ib_theme%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'Theme%20Match'%3A%20'Yes'%20if%20not%20theme_mismatch%20else%20'No'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'Template%20Module'%3A%20template_module%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'IB%20Module'%3A%20ib_module%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'Module%20Match'%3A%20'Yes'%20if%20not%20module_mismatch%20else%20'No'%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D)%0A%0A%20%20%20%20mismatch_df%20%3D%20pd.DataFrame(mismatch_analysis)%0A%20%20%20%20return%20(mismatch_df%2C)%0A%0A%0A%40app.cell%0Adef%20_(mismatch_df%2C%20mo)%3A%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%20%20%20%20%23%23%20Theme%20%26%20Module%20Naming%20Mismatches%0A%0A%20%20%20%20%20%20%20%20Analysis%20of%20matched%20questions%20with%20different%20theme%2Fmodule%20names%20between%20template%20and%20IB.%0A%20%20%20%20%20%20%20%20Found%20%7Blen(mismatch_df)%7D%20questions%20with%20naming%20inconsistencies.%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20mo.ui.table(mismatch_df%2C%20selection%3DNone)%0A%20%20%20%20%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(ib_data%2C%20pd%2C%20template)%3A%0A%20%20%20%20%23%20Theme%2FModule%20consistency%20check%0A%20%20%20%20template_survey%20%3D%20template.survey%0A%20%20%20%20template_themes%20%3D%20set(template_survey%5B'theme'%5D.dropna().unique())%0A%20%20%20%20template_modules%20%3D%20set(template_survey%5B'module'%5D.dropna().unique())%20if%20'module'%20in%20template_survey.columns%20else%20set()%0A%0A%20%20%20%20ib_themes%20%3D%20set(ib_data%5B'Sector%2FTheme'%5D.dropna().unique())%0A%20%20%20%20ib_modules%20%3D%20set(ib_data%5B'Module'%5D.dropna().unique())%0A%0A%20%20%20%20consistency_data%20%3D%20%7B%0A%20%20%20%20%20%20%20%20'Metric'%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20'Unique%20themes%20in%20Template'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Unique%20themes%20in%20IB'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Unique%20modules%20in%20Template'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20'Unique%20modules%20in%20IB'%2C%0A%20%20%20%20%20%20%20%20%5D%2C%0A%20%20%20%20%20%20%20%20'Count'%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20len(template_themes)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20len(ib_themes)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20len(template_modules)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20len(ib_modules)%2C%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%7D%0A%0A%20%20%20%20consistency_df%20%3D%20pd.DataFrame(consistency_data)%0A%20%20%20%20return%20(consistency_df%2C)%0A%0A%0A%40app.cell%0Adef%20_(consistency_df%2C%20mo)%3A%0A%20%20%20%20mo.ui.table(consistency_df%2C%20selection%3DNone)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(ib_data%2C%20matched%2C%20pd%2C%20template)%3A%0A%20%20%20%20%23%20Constraint%20and%20Skip%20Logic%20analysis%20for%20matched%20questions%0A%20%20%20%20skip_logic_analysis%20%3D%20%5B%5D%0A%20%20%20%20constraint_analysis%20%3D%20%5B%5D%0A%0A%20%20%20%20for%20qcode_logic%20in%20matched%3A%0A%20%20%20%20%20%20%20%20tpl_row%20%3D%20template.survey%5Btemplate.survey%5B'name'%5D%20%3D%3D%20qcode_logic%5D%0A%20%20%20%20%20%20%20%20if%20len(tpl_row)%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20continue%0A%0A%20%20%20%20%20%20%20%20template_relevant%20%3D%20tpl_row%5B'relevant'%5D.iloc%5B0%5D%20if%20'relevant'%20in%20tpl_row.columns%20else%20None%0A%20%20%20%20%20%20%20%20template_constraint%20%3D%20tpl_row%5B'constraint'%5D.iloc%5B0%5D%20if%20'constraint'%20in%20tpl_row.columns%20else%20None%0A%0A%20%20%20%20%20%20%20%20template_has_relevant%20%3D%20pd.notna(template_relevant)%20and%20str(template_relevant).strip()%20!%3D%20''%0A%20%20%20%20%20%20%20%20template_has_constraint%20%3D%20pd.notna(template_constraint)%20and%20str(template_constraint).strip()%20!%3D%20''%0A%0A%20%20%20%20%20%20%20%20ib_row_logic%20%3D%20ib_data%5Bib_data%5B'Question%20code'%5D%20%3D%3D%20qcode_logic%5D%0A%20%20%20%20%20%20%20%20if%20len(ib_row_logic)%20%3D%3D%200%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20continue%0A%0A%20%20%20%20%20%20%20%20%23%20Get%20skip%20logic%20from%20IB%0A%20%20%20%20%20%20%20%20ib_skip_logic%20%3D%20None%0A%20%20%20%20%20%20%20%20for%20col_logic%20in%20%5B'Subset%20%2F%20Skip%20logic'%2C%20'Skip%20logic'%2C%20'Subset'%2C%20'Skip%20Logic'%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20col_logic%20in%20ib_row_logic.columns%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20ib_skip_logic%20%3D%20ib_row_logic%5Bcol_logic%5D.iloc%5B0%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20break%0A%0A%20%20%20%20%20%20%20%20ib_constraint%20%3D%20ib_row_logic%5B'Constraint'%5D.iloc%5B0%5D%20if%20'Constraint'%20in%20ib_row_logic.columns%20else%20None%0A%0A%20%20%20%20%20%20%20%20ib_has_skip_logic%20%3D%20pd.notna(ib_skip_logic)%20and%20str(ib_skip_logic).strip()%20!%3D%20''%0A%20%20%20%20%20%20%20%20ib_has_constraint%20%3D%20pd.notna(ib_constraint)%20and%20str(ib_constraint).strip()%20!%3D%20''%0A%0A%20%20%20%20%20%20%20%20skip_logic_missing%20%3D%20ib_has_skip_logic%20and%20not%20template_has_relevant%0A%20%20%20%20%20%20%20%20constraint_missing%20%3D%20ib_has_constraint%20and%20not%20template_has_constraint%0A%0A%20%20%20%20%20%20%20%20%23%20Add%20to%20skip%20logic%20analysis%0A%20%20%20%20%20%20%20%20if%20skip_logic_missing%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20skip_logic_analysis.append(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'Question%20Code'%3A%20qcode_logic%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'IB%20Skip%20Logic'%3A%20str(ib_skip_logic)%20if%20ib_has_skip_logic%20else%20''%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'Template%20Relevant'%3A%20str(template_relevant)%20if%20template_has_relevant%20else%20'EMPTY'%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D)%0A%0A%20%20%20%20%20%20%20%20%23%20Add%20to%20constraint%20analysis%0A%20%20%20%20%20%20%20%20if%20constraint_missing%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20constraint_analysis.append(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'Question%20Code'%3A%20qcode_logic%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'IB%20Constraint'%3A%20str(ib_constraint)%20if%20ib_has_constraint%20else%20''%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'Template%20Constraint'%3A%20str(template_constraint)%20if%20template_has_constraint%20else%20'EMPTY'%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D)%0A%0A%20%20%20%20skip_logic_df%20%3D%20pd.DataFrame(skip_logic_analysis)%0A%20%20%20%20constraint_df%20%3D%20pd.DataFrame(constraint_analysis)%0A%0A%20%20%20%20return%20constraint_df%2C%20skip_logic_df%0A%0A%0A%40app.cell%0Adef%20_(constraint_df%2C%20mo%2C%20skip_logic_df)%3A%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%20%20%20%20%23%23%20Constraint%20%26%20Skip%20Logic%20Mismatches%0A%0A%20%20%20%20%20%20%20%20Analysis%20of%20matched%20questions%20where%20IB%20has%20constraint%2Fskip%20logic%20but%20template%20is%20empty.%0A%0A%20%20%20%20%20%20%20%20%23%23%23%20Skip%20Logic%20%2F%20Relevant%20Field%20Analysis%0A%0A%20%20%20%20%20%20%20%20**%7Blen(skip_logic_df)%7D**%20questions%20where%20IB%20has%20skip%20logic%20but%20template%20relevant%20field%20is%20empty.%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20mo.ui.table(skip_logic_df%2C%20selection%3DNone)%2C%0A%20%20%20%20%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%20%20%20%20%23%23%23%20Constraint%20Field%20Analysis%0A%0A%20%20%20%20%20%20%20%20**%7Blen(constraint_df)%7D**%20questions%20where%20IB%20has%20constraint%20but%20template%20constraint%20field%20is%20empty.%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20mo.ui.table(constraint_df%2C%20selection%3DNone)%0A%20%20%20%20%5D)%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      window.__MARIMO_MOUNT_CONFIG__ = {
+            "filename": "notebook.py",
+            "mode": "read",
+            "version": "0.19.6",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "uv"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "medium"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        };
+    </script>
+  </body>
+</html>
