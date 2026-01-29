@@ -98,7 +98,11 @@ logs/
 *.temp
 
 # ===========================
-# Scratch/Test Files
+# Scratch/Test Files and dev
 # ===========================
 scratch/
+dev/*
+
+
+### Data
 data/notebook_cache/
