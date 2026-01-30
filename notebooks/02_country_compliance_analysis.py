@@ -211,8 +211,11 @@ def _(country_summary, mo):
 @app.cell
 def _(country_summary, mo, px):
     # Overall match visualization
+    # Sort by match_pct ascending for proper bar ordering
+    country_summary_sorted = country_summary.reset_index().sort_values('match_pct', ascending=True)
+    
     fig_overall = px.bar(
-        country_summary.reset_index(),
+        country_summary_sorted,
         x='match_pct',
         y='survey_name',
         orientation='h',
