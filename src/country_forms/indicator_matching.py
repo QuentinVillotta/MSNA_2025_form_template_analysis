@@ -3,6 +3,7 @@
 from pathlib import Path
 import pandas as pd
 from loguru import logger
+from rapidfuzz import fuzz, process
 
 
 def generate_indicator_match_matrix(
@@ -153,5 +154,93 @@ def generate_country_match_summary(
     df = df.sort_values('match_pct', ascending=False)
     
     logger.info(f"Generated summary: {len(df)} countries")
+    
+    return df
+
+
+def detect_near_matches(
+    template_survey_df: pd.DataFrame,
+    country_survey_df: pd.DataFrame,
+    assets_df: pd.DataFrame,
+    similarity_threshold: int = 85
+) -> pd.DataFrame:
+    """
+    Detect near-matches between template and country indicators using fuzzy matching.
+    
+    Identifies potential typos, plurals, and naming variations that cause mismatches
+    despite indicators being functionally equivalent.
+    
+    Args:
+        template_survey_df: Template survey with indicator names
+        country_survey_df: Survey data from all countries
+        assets_df: Asset metadata with country information
+        similarity_threshold: Minimum similarity score (0-100) to consider a match
+        
+    Returns:
+        DataFrame with:
+        - Columns: [template_name, country_name, survey_name, country_code, 
+                    similarity_score, length_diff]
+        - Sorted by similarity score descending
+    """
+    logger.info(f"Detecting near-matches with threshold >= {similarity_threshold}%")
+    
+    # Get template indicators (keep original with potential whitespace)
+    template_indicators = template_survey_df[
+        template_survey_df['type'].notna() & 
+        ~template_survey_df['type'].str.startswith(('begin', 'end', 'note'))
+    ]['name'].dropna().unique()
+    
+    near_matches = []
+    
+    for _, asset in assets_df.iterrows():
+        uid = asset['uid']
+        survey_name = asset['name']
+        country_code = asset['country_code_settings']
+        
+        # Get country indicators (keep original with potential whitespace)
+        country_indicators = country_survey_df[
+            country_survey_df['asset_uid'] == uid
+        ]['name'].dropna().unique()
+        
+        # Find indicators that don't match exactly
+        template_set = set(template_indicators)
+        country_set = set(country_indicators)
+        
+        template_only = template_set - country_set
+        country_only = country_set - template_set
+        
+        # Fuzzy match between non-matching indicators
+        for template_name in template_only:
+            # Find best matches in country-only indicators
+            matches = process.extract(
+                template_name,
+                country_only,
+                scorer=fuzz.ratio,
+                limit=3
+            )
+            
+            for country_name, score, _ in matches:
+                if score >= similarity_threshold:
+                    # Check if difference is only whitespace
+                    template_stripped = str(template_name).strip()
+                    country_stripped = str(country_name).strip()
+                    is_whitespace_only = template_stripped == country_stripped
+                    
+                    near_matches.append({
+                        'template_name': template_name,
+                        'country_name': country_name,
+                        'survey_name': survey_name,
+                        'country_code': country_code,
+                        'similarity_score': score,
+                        'length_diff': abs(len(template_name) - len(country_name)),
+                        'whitespace_only': is_whitespace_only
+                    })
+    
+    df = pd.DataFrame(near_matches)
+    
+    if len(df) > 0:
+        df = df.sort_values('similarity_score', ascending=False)
+    
+    logger.info(f"Found {len(df)} near-matches at threshold >= {similarity_threshold}%")
     
     return df
