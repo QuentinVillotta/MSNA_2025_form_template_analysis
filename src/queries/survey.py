@@ -27,12 +27,29 @@ def get_survey_metadata(
     SELECT 
         a.uid as asset_uid,
         a.name as asset_name,
-        acs.name as question_name,
-        acs.type as question_type,
-        acs._kuid as question_kuid,
-        acs._qpath as question_qpath,
-        acs.required as question_required,
-        acs._dlt_list_idx as question_order
+        -- Template columns from asset_content__survey
+        acs.type,
+        acs.name,
+        acs.label_english_enx as "label::english (en)",
+        acs.label_french_frx as "label::french (fr)",
+        acs.hint_english_enx as "hint::english (en)",
+        acs.hint_french_frx as "hint::french (fr)",
+        acs.calculation,
+        acs.required,
+        acs.relevant,
+        acs.constraint,
+        acs.default,
+        acs.repeat_count,
+        acs.constraint_message_english_enx as "constraint_message::english (en)",
+        acs.constraint_message_french_frx as "constraint_message::french (fr)",
+        acs.appearance,
+        acs.choice_filter,
+        acs.parameters,
+        -- Internal KoBo fields
+        acs._kuid,
+        acs._qpath,
+        acs._dlt_list_idx as question_order,
+        acs._dlt_parent_id
     FROM asset a
     INNER JOIN asset_content ac ON a.uid = ac._asset_uid
     INNER JOIN asset_content__survey acs ON ac._dlt_id = acs._dlt_parent_id
