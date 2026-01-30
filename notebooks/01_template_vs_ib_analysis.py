@@ -123,7 +123,7 @@ def _(
 
 @app.cell
 def _(mo, summary_table):
-    mo.ui.table(summary_table, selection=None)
+    mo.ui.table(summary_table, selection=None, page_size=25)
     return
 
 
@@ -244,7 +244,7 @@ def _(close_matches_sorted, mo, pd, similarity_threshold):
         Adjust the similarity threshold to fine-tune detection:
         """),
         similarity_threshold,
-        mo.ui.table(near_matches_df, selection=None) if len(near_matches_df) > 0 else mo.md("*No near-matches found at this threshold.*")
+        mo.ui.table(near_matches_df, selection=None, page_size=25) if len(near_matches_df) > 0 else mo.md("*No near-matches found at this threshold.*")
     ])
     return (near_matches_df,)
 
@@ -321,7 +321,7 @@ def _(kobo_metadata_names, kobo_technical_types, matched, mo, px, template):
 @app.cell
 def _(fig_type, mo, type_pivot):
     mo.vstack([
-        mo.ui.table(type_pivot, selection=None),
+        mo.ui.table(type_pivot, selection=None, page_size=25),
         mo.ui.plotly(fig_type)
     ])
     return
@@ -369,13 +369,13 @@ def _(in_ib_not_template, indicator_bank, matched, mo, pd):
 @app.cell
 def _(mo, tier1_not_in_template, tier_df):
     mo.vstack([
-        mo.ui.table(tier_df, selection=None),
+        mo.ui.table(tier_df, selection=None, page_size=25),
         mo.md(f"""
         ### Tier 1 Questions Not in Template ({len(tier1_not_in_template)} critical questions)
         
         These critical questions are missing from the template.
         """),
-        mo.ui.table(tier1_not_in_template, selection=None)
+        mo.ui.table(tier1_not_in_template, selection=None, page_size=25)
     ])
     return
 
@@ -428,7 +428,7 @@ def _(mo, px, theme_df):
 
         Mismatch breakdown by sector/theme - sorted by highest number of missing questions.
         """),
-        mo.ui.table(theme_df, selection=None)
+        mo.ui.table(theme_df, selection=None, page_size=25)
     ])
     return (fig_theme,)
 
@@ -490,7 +490,7 @@ def _(mo, module_df, px):
 
         Detailed breakdown by module - showing theme association and match rates.
         """),
-        mo.ui.table(module_df, selection=None)
+        mo.ui.table(module_df, selection=None, page_size=25)
     ])
     return (fig_module,)
 
@@ -548,7 +548,7 @@ def _(mismatch_df, mo):
         Analysis of matched questions with different theme/module names between template and IB.
         Found {len(mismatch_df)} questions with naming inconsistencies.
         """),
-        mo.ui.table(mismatch_df, selection=None)
+        mo.ui.table(mismatch_df, selection=None, page_size=25)
     ])
     return
 
@@ -584,7 +584,7 @@ def _(ib_data, pd, template):
 
 @app.cell
 def _(consistency_df, mo):
-    mo.ui.table(consistency_df, selection=None)
+    mo.ui.table(consistency_df, selection=None, page_size=25)
     return
 
 
@@ -658,13 +658,13 @@ def _(constraint_df, mo, skip_logic_df):
         
         **{len(skip_logic_df)}** questions where IB has skip logic but template relevant field is empty.
         """),
-        mo.ui.table(skip_logic_df, selection=None),
+        mo.ui.table(skip_logic_df, selection=None, page_size=25),
         mo.md(f"""
         ### Constraint Field Analysis
         
         **{len(constraint_df)}** questions where IB has constraint but template constraint field is empty.
         """),
-        mo.ui.table(constraint_df, selection=None)
+        mo.ui.table(constraint_df, selection=None, page_size=25)
     ])
     return
 

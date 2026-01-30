@@ -123,7 +123,7 @@ def _(column_presence, mo):
         'Coverage %': (presence_summary.values / len(column_presence) * 100).round(1)
     })
     
-    mo.ui.table(presence_df, selection=None)
+    mo.ui.table(presence_df, selection=None, page_size=25)
     return presence_df, presence_summary
 
 
@@ -204,7 +204,7 @@ def _(country_summary, mo):
     display_summary = country_summary[['country_code', 'n_total_indicators', 'n_matched', 'n_not_matched', 'match_pct']].copy()
     display_summary.columns = ['Country', 'Total Indicators', 'Matched', 'Not Matched', 'Match %']
     
-    mo.ui.table(display_summary, selection=None)
+    mo.ui.table(display_summary, selection=None, page_size=25)
     return (display_summary,)
 
 
@@ -533,7 +533,7 @@ def _(mo, near_matches, pd, similarity_slider, survey_dropdown):
             
             These represent potential data quality issues that should be standardized.
             """),
-            mo.ui.table(display_near, selection=None)
+            mo.ui.table(display_near, selection=None, page_size=25)
         ])
     else:
         display_near = pd.DataFrame()
