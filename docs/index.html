@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSNA 2025 Analysis Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 3rem;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 2rem;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        .analyses {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .analysis-card {
+            background: linear-gradient(135deg, #f6f8fb 0%, #ffffff 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .analysis-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.15);
+            border-color: #667eea;
+        }
+        
+        .analysis-card.active {
+            border-color: #48bb78;
+            background: linear-gradient(135deg, #f0fff4 0%, #ffffff 100%);
+        }
+        
+        .analysis-card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .analysis-card.coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+        
+        .status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status.live {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        
+        .status.soon {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+        
+        .card-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .feature-tag {
+            background: #edf2f7;
+            color: #4a5568;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #f0f0f0;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                padding: 2rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .card-title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MSNA 2025 Form Analysis</h1>
+            <p>Template compliance and quality control</p>
+            <span class="badge">Impact Initiatives</span>
+        </div>
+        
+        <div class="analyses">
+            <a href="template-vs-ib/" class="analysis-card active">
+                <div class="card-header">
+                    <h2 class="card-title">Template vs Indicator Bank</h2>
+                    <span class="status live">Live</span>
+                </div>
+                <p class="card-description">
+                    Interactive analysis comparing the MSNA 2025 Kobo form template against the official 
+                    indicator bank. Identifies gaps, naming inconsistencies, and missing validation rules 
+                    to support HQ process improvement.
+                </p>
+                <div class="card-features">
+                    <span class="feature-tag">Match Analysis</span>
+                    <span class="feature-tag">Fuzzy Matching</span>
+                    <span class="feature-tag">Tier Prioritization</span>
+                    <span class="feature-tag">CSV Export</span>
+                    <span class="feature-tag">Interactive Charts</span>
+                </div>
+            </a>
+            
+            <a href="country-compliance/" class="analysis-card active">
+                <div class="card-header">
+                    <h2 class="card-title">Country Compliance Analysis</h2>
+                    <span class="status live">Live</span>
+                </div>
+                <p class="card-description">
+                    Comprehensive analysis of template compliance across 14 country MSNAs. Includes column 
+                    presence matrix, indicator matching by tier/theme, and interactive fuzzy matching to 
+                    detect typos and naming variations.
+                </p>
+                <div class="card-features">
+                    <span class="feature-tag">Column Coverage</span>
+                    <span class="feature-tag">Match by Tier</span>
+                    <span class="feature-tag">Theme Heatmaps</span>
+                    <span class="feature-tag">Typo Detection</span>
+                    <span class="feature-tag">14 Countries</span>
+                </div>
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>Data last updated: January 2026 | Workshop preparation in progress</p>
+        </div>
+    </div>
+</body>
+</html>

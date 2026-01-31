@@ -1,0 +1,17 @@
+services:
+  msna-notebooks:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: msna-analysis
+    ports:
+      - "2718:2718"
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:2718"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

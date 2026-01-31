@@ -35,6 +35,10 @@ class TemplateLoader:
             logger.info(f"Loading MSNA 2025 template from {self.template_path}")
             self._survey = pd.read_excel(self.template_path, sheet_name="survey")
             self._choices = pd.read_excel(self.template_path, sheet_name="choices")
+            
+            # Remove unnamed columns created by pandas when reading Excel
+            self._survey = self._survey.loc[:, ~self._survey.columns.str.startswith('Unnamed:')]
+            
             logger.success(f"Template loaded: {len(self._survey)} survey rows, {len(self._choices)} choice rows")
         
         return self._survey.copy(), self._choices.copy()
