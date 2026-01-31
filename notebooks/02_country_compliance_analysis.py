@@ -214,20 +214,39 @@ def _(country_summary, mo, px):
     # Sort by match_pct ascending for proper bar ordering
     country_summary_sorted = country_summary.reset_index().sort_values('match_pct', ascending=True)
     
+    # Create unique display names for surveys with duplicate names
+    # Add suffix (1), (2) etc. for duplicates
+    name_counts = country_summary_sorted['survey_name'].value_counts()
+    duplicates = name_counts[name_counts > 1].index
+    
+    # Add occurrence number for duplicates using groupby
+    country_summary_sorted['occurrence'] = country_summary_sorted.groupby('survey_name').cumcount() + 1
+    
+    # Create display name only for duplicates
+    country_summary_sorted['display_name'] = country_summary_sorted.apply(
+        lambda row: f"{row['survey_name']} ({row['occurrence']})" 
+        if row['survey_name'] in duplicates 
+        else row['survey_name'],
+        axis=1
+    )
+    
+    # Drop the temporary occurrence column
+    country_summary_sorted = country_summary_sorted.drop('occurrence', axis=1)
+    
     fig_overall = px.bar(
         country_summary_sorted,
         x='match_pct',
-        y='survey_name',
+        y='display_name',
         orientation='h',
         title='Template Compliance by Country (%)',
-        labels={'match_pct': 'Match %', 'survey_name': 'Survey'},
+        labels={'match_pct': 'Match %', 'display_name': 'Survey'},
         color='match_pct',
         color_continuous_scale='RdYlGn',
         range_color=[0, 100],
         text='match_pct'
     )
     fig_overall.update_traces(texttemplate='%{text:.1f}%', textposition='outside')
-    fig_overall.update_layout(height=600, yaxis={'categoryorder': 'total ascending'})
+    fig_overall.update_layout(height=600, yaxis={'categoryorder': 'trace'})
     
     mo.md("### Overall Compliance")
     return (fig_overall,)
