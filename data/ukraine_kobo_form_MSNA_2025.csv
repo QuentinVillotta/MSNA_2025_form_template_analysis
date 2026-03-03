@@ -1,0 +1,628 @@
+asset_uid,asset_name,type,name,label::english (en),label::french (fr),hint::english (en),hint::french (fr),calculation,required,relevant,constraint,default,repeat_count,constraint_message::english (en),constraint_message::french (fr),appearance,choice_filter,parameters,_kuid,_qpath,question_order,_dlt_parent_id
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,start,start,,,,,,,,,,,,,,,,mc6FK3reS,,0,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end,end,,,,,,,,,,,,,,,,G33WfmUVV,,1,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,today,today,,,,,,,,,,,,,,,,7ms3VrnHc,,2,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,deviceid,deviceid,,,,,,,,,,,,,,,,zy9lxRUbK,,3,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,audit,audit,,,,,,,,,,,,,,,track-changes=true,7enb7UAwh,,4,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,A_0_enumid,,,,,,true,,,,,,,,,,IlyrWKlCD,,5,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,cati_id,,,,,,true,,,,,,,,,,yupBfbUmV,,6,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one consent,A_1_consent,,,,,,true,,,,,,,,,,aEwXWaXTt,,7,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,consent_ok,,,,,,,"selected(${A_1_consent},'yes')",,,,,,,,,y6bqUaeta,,8,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,A_2_consent_note,,,,,,false,,,,,,,,,,kxhNT0V8f,,9,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,location,,,,,,,,,,,,,,,,SGqhd9zjd,,10,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one oblast,A_2_1_oblast,,,,,,true,,,,,,,autocomplete,,,jV1sCBYO8,,11,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,A_2_1_1_start_real_time,,,,,once(now()),,${A_2_1_oblast}!='',,,,,,,,,DqmSzze3T,,12,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one raion,A_2_2_raion,,,,,,true,"not(selected(${A_2_1_oblast},'oblast_not_in_list'))",,,,,,autocomplete,filter=${A_2_1_oblast},,1Gp0FpqvS,,13,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,raion_kiis,,,,,,,"not(selected(${A_2_2_raion},'raion_not_in_list')) and not(selected(${A_2_1_oblast},'oblast_not_in_list'))",,,,,,,,,bEnRg9fcz,,14,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one hromada,A_2_3_hromada,,,,,,true,,,,,,,autocomplete,filter=${A_2_2_raion},,HINUXAnzP,,15,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one_from_file settlement_choices.csv,A_2_4_settlement,,,,,,true,"not(selected(${A_2_3_hromada},'hromada_not_in_list')) and not(selected(${A_2_3_hromada},'prefer_not_to_answer'))",,,,,,autocomplete,filter=${A_2_3_hromada},,cjI6j4ZOr,,16,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,strata_1,,,,,"pulldata('strata','strata_name','ADM4_PCODE',${A_2_4_settlement})",,,,,,,,,,,UMdUDXaYc,,17,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,raion_kiis,,,,,,,,,,,,,,,,Sir3hgVjh,,18,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,location,,,,,,,,,,,,,,,,jYLRmHfvM,,19,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,location_ok,,,,,,,"not(selected(${A_2_1_oblast}, 'oblast_not_in_list') or selected(${A_2_2_raion}, 'raion_not_in_list') or selected(${A_2_3_hromada}, 'hromada_not_in_list') or selected(${A_2_4_settlement}, 'settlement_not_in_list'))
+and 
+(${A_2_1_oblast} != '' and ${A_2_2_raion} != '' and ${A_2_3_hromada} != '' and ${A_2_4_settlement} != '')",,,,,,,,,Fe7JJE7oR,,20,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one lang_standard,A_3_lang_standard,,,,,,true,,,,,,,,,,nXVtQptCe,,21,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,A_3_1_lang_standard_other,,,,,,true,"selected(${A_3_lang_standard}, 'other')","not(regex(., '.*\d.*'))",,,,,,,,A1G3lgs5R,,22,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one lang_other,A_4_lang_other,,,,,,true,"selected(${A_3_lang_standard}, 'other')",,,,,,,,,Uu1gT7fgr,,23,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,language_ok,,,,,,,"selected(${A_3_lang_standard},'ukrainian') or selected(${A_3_lang_standard},'russian') or selected(${A_4_lang_other},'yes_in_ukrainian') or selected(${A_4_lang_other},'yes_in_russian')",,,,,,,,,BaYPVxASh,,24,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,A_5_resp_age,,,,,,true,,.>1 and .<=120,,,,,,,,cvFiLADaT,,25,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,age_ok,,,,,,,${A_5_resp_age} > 17,,,,,,,,,V7XbzlBYs,,26,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yes_no,A_6_resp_hoh,,,,,,true,,,,,,,,,,fsjkT4UCz,,27,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yes_no,A_7_resp_hoh_behalf,,,,,,true,"not(selected(${A_6_resp_hoh},'yes') or selected(${A_6_resp_hoh},''))",,,,,,,,,tF1rozg9a,,28,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,hohh_ok,,,,,,,"selected(${A_6_resp_hoh},'yes') or selected(${A_7_resp_hoh_behalf},'yes')",,,,,,,,,IojZG37cP,,29,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,group_demography,,,,,,,,,,,,,,,,FWrzCBUuq,,30,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,B_1_dem_intro,,,,,,false,,,,,,,,,,0BWWjFWNX,,31,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one child_outside_hh,B_38_child_outside_hh,,,,,,true,,,,,,,,,,GtoO2oHdy,,32,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple child_outside_reason,B_39_child_outside_reason,,,,,,true,"selected(${B_38_child_outside_hh}, 'yes')","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer')) and (count-selected(.)>1))",,,,,,,,VzgOvRc0J,,33,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,B_39_1_child_outside_reason_other,,,,,,true,"selected(${B_39_child_outside_reason}, 'other')",,,,,,,,,I0cHBbB4s,,34,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,B_2_hh_size,,,,,,true,,.>0 and .<20,,,,,,,,gliP4fmE9,,35,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_repeat,individual_loop,,,,,,,,,,${B_2_hh_size},,,,,,zXvfzR0uA,,36,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yes_no,B_0_mem_respondent,,,,,,,,"if(position(..) = 1, . = 'yes', . = 'no')",,,,,,,,LugOG2ZQG,,37,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,calc_loop_index,,,,,position(..),,,,,,,,,,,X8fKTPOQo,,38,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,B_4_en,,,,,"if(selected(${B_0_mem_respondent}, 'yes'), concat(""We are now going to ask some questions about you.""), ""We are now going to ask some questions about the other household members. Please answer the questions starting with the youngest member and ending with the oldest member."")",,,,,,,,,,,IsZhmlbkx,,39,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,B_4_ua,,,,,"if(selected(${B_0_mem_respondent}, 'yes'), concat(""Далі ми поставимо кілька запитань про Вас""), ""Зараз ми поставимо кілька запитань про інших членів сім'ї. Будь ласка, відповідайте на запитання, починаючи з наймолодшого члена сім'ї і закінчуючи найстаршим."")",,,,,,,,,,,99m4s04iD,,40,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,B_4_ru,,,,,"if(selected(${B_0_mem_respondent}, 'yes'), concat(""Далее мы зададим несколько вопросов о Вас""), ""Сейчас мы зададим несколько вопросов о других членах семьи. Пожалуйста, ответьте на вопросы, начиная с самого младшего члена семьи и заканчивая самым старшим."")",,,,,,,,,,,PsU6xKbrm,,41,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,B_4_dem_memebers_intro,,,,,,false,${B_2_hh_size} > 1,,,,,,,,,ehHwO7SI3,,42,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,mem_respondent,,,,,"if(selected(${B_0_mem_respondent},'yes'),1,0)",,,,,,,,,,,OvRnDA0n6,,43,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,B_5_en,,,,,"if(selected(${B_0_mem_respondent},'yes'),concat(""Your age is "",${A_5_resp_age},"", right?""),""What is the age of the household member?"")",,,,,,,,,,,uZSU1zXEQ,,44,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,B_5_ua,,,,,"if(selected(${B_0_mem_respondent},'yes'),concat(""Ваш вік "",${A_5_resp_age},"" років, правильно?""),""Який вік цього члена домогосподарства?"")",,,,,,,,,,,CbOhVGqxO,,45,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,B_5_ru,,,,,"if(selected(${B_0_mem_respondent},'yes'),concat(""Ваш возраст "",${A_5_resp_age},"" лет, верно?""),""Каков возраст этого члена домохозяйства?"")",,,,,,,,,,,M9JuO7ffW,,46,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,B_5_hh_mem_age,,,,,"once(if(selected(${B_0_mem_respondent},'yes'),${A_5_resp_age},''))",true,,"if(position(..)=1,.=${A_5_resp_age},.<=120)",,,,,,,,ULLj9ntb1,,47,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,B_6_infant_age,,,,,,true,${B_5_hh_mem_age}=0,.<12,,,,,,,,LYHMGOj5X,,48,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,less_than_18,,,,,"if(${B_5_hh_mem_age}<18,1,0)",,,,,,,,,,,02juBe8e9,,49,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,less_than_5,,,,,"if(${B_5_hh_mem_age}<5,1,0)",,,,,,,,,,,9Ma4tYt6a,,50,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,age_5_17,,,,,"if(${B_5_hh_mem_age}>=5 and ${B_5_hh_mem_age}<18,1,0)",,,,,,,,,,,IBU71XGea,,51,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,B_7_en,,,,,"if(selected(${B_0_mem_respondent},'yes'),"" What is your gender?"",""What is the gender of this household member?"")",,,,,,,,,,,JYAveItMg,,52,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,B_7_ua,,,,,"if(selected(${B_0_mem_respondent},'yes'),"" Який Ваш гендер?"",""Який гендер цього члена домогосподарства?"")",,,,,,,,,,,39q0i8GYS,,53,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,B_7_ru,,,,,"if(selected(${B_0_mem_respondent},'yes'),""Каков Ваш гендер?"",""Каков гендер этого члена домохозяйства?"")",,,,,,,,,,,8Ml4rb9uM,,54,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one hh_mem_gender,B_7_hh_mem_gender,,,,,,true,,,,,,,,,,xOy25qFgw,,55,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,B_7_1_hh_mem_gender_other,,,,,,true,"selected(${B_7_hh_mem_gender}, 'other')",,,,,,,,,ZeTk6VRIA,,56,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,resp_woman,,,,,"if(selected(${B_7_hh_mem_gender},'woman_girl') and selected(${B_0_mem_respondent},'yes'),1,0)",,,,,,,,,,,fdbAv14VW,,57,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,mem_woman_girl,,,,,"if(selected(${B_7_hh_mem_gender},'woman_girl'),1,0)",,,,,,,,,,,tbVjVyC8i,,58,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,mem_woman_girl_menstruation,,,,,"if(selected(${B_7_hh_mem_gender}, 'woman_girl') and ${B_5_hh_mem_age} >7 and ${B_5_hh_mem_age}<56, 1, 0)",,,,,,,,,,,BO1Exgpm1,,59,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,mem_man,,,,,"if(${B_5_hh_mem_age}<18,0,if(selected(${B_7_hh_mem_gender},'man_boy'),1,0))",,,,,,,,,,,YBiG4RjRW,,60,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,gender_label,,,,,"if(${B_5_hh_mem_age}<18 and selected(${B_7_hh_mem_gender},'man_boy'),""boy"",if(${B_5_hh_mem_age}>17 and selected(${B_7_hh_mem_gender},'man_boy'),""man"",if(${B_5_hh_mem_age}<18 and selected(${B_7_hh_mem_gender},'woman_girl'),""girl"",if(${B_5_hh_mem_age}>17 and selected(${B_7_hh_mem_gender},'woman_girl'),""woman"",""""))))",,,,,,,,,,,PkURk4zQA,,61,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,gender_label_ua,,,,,"if(${B_5_hh_mem_age}<18 and selected(${B_7_hh_mem_gender},'man_boy'),""хлопець"",if(${B_5_hh_mem_age}>17 and selected(${B_7_hh_mem_gender},'man_boy'),""чоловік"",if(${B_5_hh_mem_age}<18 and selected(${B_7_hh_mem_gender},'woman_girl'),""дівчина"",if(${B_5_hh_mem_age}>17 and selected(${B_7_hh_mem_gender},'woman_girl'),""жінка"",""""))))",,,,,,,,,,,6bR6l7CDc,,62,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,gender_label_ru,,,,,"if(${B_5_hh_mem_age}<18 and selected(${B_7_hh_mem_gender},'man_boy'),""мальчик"",if(${B_5_hh_mem_age}>17 and selected(${B_7_hh_mem_gender},'man_boy'),""мужчина"",if(${B_5_hh_mem_age}<18 and selected(${B_7_hh_mem_gender},'woman_girl'),""девочка"",if(${B_5_hh_mem_age}>17 and selected(${B_7_hh_mem_gender},'woman_girl'),""женщина"",""""))))",,,,,,,,,,,G31JbFr75,,63,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,B_8_en,,,,,"if(selected(${B_0_mem_respondent},'yes'),""Do you consider yourself to be a head of the household, a person who makes decisions on behalf of the entire household?"",concat("" Do you consider this person ("",${B_5_hh_mem_age},"" y.o. "",${gender_label},"") to be the head of the household, a person who makes decisions on behalf of the entire household?""))",,,,,,,,,,,fEixXRyhc,,64,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,B_8_ua,,,,,"if(selected(${B_0_mem_respondent},'yes'),"" Ви голова домогосподарства?"",concat(""Чи вважаєте Ви цю людину  ("",${B_5_hh_mem_age},"" років, "",${gender_label_ua},"") головою домогосподарства, тобто людиною, яка бере участь у прийнятті важливих рішень для домогосподарства?""))",,,,,,,,,,,U7cSdh6V1,,65,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,B_8_ru,,,,,"if(selected(${B_0_mem_respondent},'yes'),""Вы глава домохозяйства?"",concat(""Считаете ли Вы этого человека ("",${B_5_hh_mem_age},"" лет, "",${gender_label_ru},"") главой домохозяйства, то есть человеком, участвующим в принятии важных решений для домохозяйства?""))",,,,,,,,,,,Gq4vIQ5S5,,66,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one hh_mem_hoh,B_8_hh_mem_hoh,,,,,,true,${B_5_hh_mem_age}>=18,"${B_2_hh_size} != 1 or selected(., 'yes')",,,,,,,,XXp1B38ut,,67,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,hh_mem_hoh_note,,,,,,false,"selected(${B_0_mem_respondent}, 'yes') and ${A_6_resp_hoh} != ${B_8_hh_mem_hoh}",,,,,,,,,wZg9vbYQ1,,68,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,hoh_yes,,,,,"if(selected(${B_8_hh_mem_hoh},'yes'),1,0)",,,,,,,,,,,PrlhSmwkY,,69,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one hoh_marital,B_9_hoh_marital,,,,,,true,"selected(${B_8_hh_mem_hoh}, 'yes')",,,,,,,,,q9xhZ97uF,,70,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,B_9_1_hoh_marital_other,,,,,,true,"selected(${B_9_hoh_marital}, 'other')",,,,,,,,,Ls5ReHvfw,,71,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one hoh_education,B_10_hoh_education,,,,,,true,"selected(${B_8_hh_mem_hoh}, 'yes')",,,,,,,,,Z1tYMMNmH,,72,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one hh_mem_empl,C_2_hh_mem_empl,,,,,,true,${B_5_hh_mem_age}>15,"not(
+  (${B_5_hh_mem_age} < 31) and 
+  (selected(${C_2_hh_mem_empl}, 'retired_not_working') or selected(${C_2_hh_mem_empl}, 'retired_but_still_working'))
+) and not(
+  (${B_5_hh_mem_age} < 18) and 
+  (selected(${C_2_hh_mem_empl}, 'military_service'))
+)",,,,,,,,xbjGOaD00,,73,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,C_2_1_hh_mem_empl_other,,,,,,true,"selected(${C_2_hh_mem_empl}, 'other')",,,,,,,,,jGBcLeG3d,,74,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one job_seekers,C_3_job_seekers,,,,,,true,"${B_5_hh_mem_age}>15 and ${B_5_hh_mem_age}<75 and (not(selected(${C_2_hh_mem_empl}, 'military_service')) and not(selected(${C_2_hh_mem_empl}, 'permanently_sick_or_disabled')))",,,,,,,,,wqXrVoE9n,,75,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple empl_barriers,C_4_empl_barriers,,,,,,true,"${B_5_hh_mem_age} > 15 and ${B_5_hh_mem_age} < 75 and 
+not(selected(${C_2_hh_mem_empl}, 'military_service')) and
+(
+  selected(${C_3_job_seekers}, 'yes') or
+  selected(${C_3_job_seekers}, 'do_not_know') or
+  selected(${C_3_job_seekers}, 'prefer_not_to_answer')
+)","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer')) and (count-selected(.)>1))",,,,,,,,Pi0S3G9Jq,,76,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,C_4_1_empl_barriers_other,,,,,,true,"selected(${C_4_empl_barriers}, 'other')",,,,,,,,,feRx4CZAY,,77,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,in_paid_work_calc,,,,,"if(${B_5_hh_mem_age}<16,0,if(selected(${C_2_hh_mem_empl},'officially_employed_with_a_permanent_job_excluding_military_service') or selected(${C_2_hh_mem_empl},'officially_employed_with_a_temporary_job')  or selected(${C_2_hh_mem_empl},'informally_unofficially_employed_with_cash_or_in_kind_payment')  or selected(${C_2_hh_mem_empl},'own_business') or selected(${C_2_hh_mem_empl},'retired_but_still_working') or selected(${C_2_hh_mem_empl},'student_and_working') or selected(${C_2_hh_mem_empl},'military_service'),1,0))",,,,,,,,,,,8xRli1VNh,,78,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,retired_calc,,,,,"if(${B_5_hh_mem_age}<31, 0, 
+   if(selected(${C_2_hh_mem_empl}, 'retired_not_working') or selected(${C_2_hh_mem_empl}, 'retired_but_still_working'), 1, 0)
+)",,,,,,,,,,,SDQCvkozD,,79,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,disabled_calc,,,,,"if(${B_5_hh_mem_age}<14,0,if(selected(${C_2_hh_mem_empl},'permanently_sick_or_disabled'),1,0))",,,,,,,,,,,IV4Bv14CR,,80,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one edu_access,D_2_edu_access,,,,,,true,${B_5_hh_mem_age}>=3 and ${B_5_hh_mem_age}<=17,,,,,,,,,ayV9qT6zW,,81,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one edu_modality,D_3_edu_modality,,,,,,true,"selected(${D_2_edu_access}, 'yes')",,,,,,,,,3S499LmOS,,82,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one edu_level_grade,D_4_edu_level_grade,,,,,,true,"selected(${D_2_edu_access}, 'yes')",,,,,,,,,rf9lPMxIu,,83,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple edu_barrier,D_5_edu_barrier,,,,,,true,"selected(${D_2_edu_access}, 'no')","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer')) and count(selected(.)) > 1) and not(selected(., 'pregnancy') and selected(${B_7_hh_mem_gender}, 'man_boy'))",,,,,,,,8lKt94d10,,84,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,edu_barrier_note_1,,,,,,,"selected(${D_5_edu_barrier}, 'the_child_has_already_completed_compulsory_school_grades') and ${B_5_hh_mem_age} < 14",,,,,,,,,bdLaSnp6Y,,85,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,edu_barrier_note_2,,,,,,,"selected(${D_5_edu_barrier}, 'the_child_is_too_young_to_attend_school') and ${B_5_hh_mem_age} > 7",,,,,,,,,GEjLBTAhj,,86,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,D_4_1_edu_barrier_other,,,,,,true,"selected(${D_5_edu_barrier}, 'other')",,,,,,,,,YrQUFTuBO,,87,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one edu_disrupted_school_damage,D_6_edu_disrupted_school_damage,,,,,,true,"selected(${D_2_edu_access}, 'yes')",,,,,,,,,OEvV53XxN,,88,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one edu_disrupted_displacement,D_7_edu_disrupted_displacement,,,,,,true,"selected(${D_2_edu_access}, 'yes')",,,,,,,,,A1Wplk0KR,,89,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,edu_access_yes_calc,,,,,"if(selected(${D_2_edu_access},'yes'),1,0)",,,,,,,,,,,snVzoA7w7,,90,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,modality_in_person,,,,,"if(selected(${D_3_edu_modality},'in_person'),1,0)",,,,,,,,,,,oq6JcUr7I,,91,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,modality_remote,,,,,"if(selected(${D_3_edu_modality},'remote'),1,0)",,,,,,,,,,,tbeWayxMh,,92,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,modality_blended,,,,,"if(selected(${D_3_edu_modality},'blended'),1,0)",,,,,,,,,,,9ETtGGY6S,,93,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,edu_interrupted_displ,,,,,"if (selected(${D_5_edu_barrier}, 'unable_to_enrol_in_school_due_to_recent_displacement_evacuation_return') or selected(${D_7_edu_disrupted_displacement}, 'yes'),1,0)",,,,,,,,,,,5yXKOOyyE,,94,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one health_needed,E_2_health_needed,,,,,,true,,,,,,,,,,2JfktpAfI,,95,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,health_needed_yes_calc,,,,,"if(selected(${E_2_health_needed},'yes'),1,0)",,,,,,,,,,,yEiujmKC5,,96,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one obtained_healthcare,E_3_obtained_healthcare,,,,,,true,"selected(${E_2_health_needed}, 'yes')",,,,,,,,,L1aDvseT1,,97,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple health_needed_type,E_4_health_needed_type,,,,,,true,"selected(${E_3_obtained_healthcare},'no')","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer')) and (count-selected(.)>1)) and not(selected(., 'ante_natal_or_post_natal_services')) or (${mem_woman_girl_menstruation} > 0)",,,,,,,,5L3zHElq2,,98,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,E_4_1_health_needed_type_other,,,,,,true,"selected(${E_4_health_needed_type}, 'other')",,,,,,,,,27UJOPJ19,,99,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,not_enought_healthcare,,,,,"if(selected(${E_3_obtained_healthcare}, 'no'), 1, 0)",,,,,,,,,,,C14Lnueoa,,100,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_repeat,individual_loop,,,,,,,,,,,,,,,,GKB02zWTn,,101,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,total_health_needed_yes_calc,,,,,sum(${health_needed_yes_calc}),,,,,,,,,,,RRkLkwmIc,,102,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,total_edu_access_yes_calc,,,,,sum(${edu_access_yes_calc}),,,,,,,,,,,jiUZXZ5UU,,103,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,total_hh_mem_woman_girl_calc,,,,,sum(${resp_woman}),,,,,,,,,,,PFDv7IZnW,,104,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,count_child,,,,,sum(${less_than_18}),,,,,,,,,,,BKO7wRvBF,,105,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,count_hoh,,,,,sum(${hoh_yes}),,,,,,,,,,,Om2IpBDEK,,106,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,count_employed,,,,,sum(${in_paid_work_calc}),,,,,,,,,,,DnUlM757h,,107,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,count_retired,,,,,sum(${retired_calc}),,,,,,,,,,,Ds5QJZHBR,,108,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,count_disabled,,,,,sum(${disabled_calc}),,,,,,,,,,,IyXiM8O2s,,109,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,count_baby_in_diapers,,,,,sum(${less_than_5}),,,,,,,,,,,39QOdah2B,,110,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,count_school_age,,,,,sum(${age_5_17}),,,,,,,,,,,Q1NxRTU1j,,111,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,count_modality_in_person,,,,,sum(${modality_in_person}),,,,,,,,,,,G1qTWFI7T,,112,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,count_modality_remote,,,,,sum(${modality_remote}),,,,,,,,,,,DI5lg5tUg,,113,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,count_modality_blended,,,,,sum(${modality_blended}),,,,,,,,,,,3w2VWStDX,,114,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,mem_man_calc,,,,,sum(${mem_man}),,,,,,,,,,,iyawlllSj,,115,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,mem_respondent_calc,,,,,sum(${mem_respondent}),,,,,,,,,,,ZSEFo4JQj,,116,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,mem_woman_girl_calc,,,,,sum(${mem_woman_girl}),,,,,,,,,,,fmkUMcs39,,117,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,mem_woman_girl_menstruation_calc,,,,,sum(${mem_woman_girl_menstruation}),,,,,,,,,,,X8EAqvmer,,118,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,edu_interrupted_displ_calc,,,,,sum(${edu_interrupted_displ}),,,,,,,,,,,lbHtnu7Lt,,119,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,not_enought_healthcare_calc,,,,,sum(${not_enought_healthcare}),,,,,,,,,,,E4iXdLhBu,,120,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,respondent_not_1,,,,,,${mem_respondent_calc}>1 or ${mem_respondent_calc}=0,${mem_respondent_calc}>1 or ${mem_respondent_calc}=0,,,,,,,,,4gn94rFZR,,121,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,no_hoh,,,,,,${count_hoh}=0 or ${count_hoh}>2,${count_hoh}=0 or ${count_hoh}>2,,,,,,,,,nk4xO2zs7,,122,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,group_demography,,,,,,,,,,,,,,,,QsHyb9aoy,,123,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,group_health,,,,,,,,,,,,,,,,F3OQZqBC6,,124,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,E_5_health_hh_intro,,,,,,false,,,,,,,,,,u89SHEAQj,,125,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,E_6_0_health_facility_time_yn,,,,,,true,,,,,,,,,,KLTCVjYLh,,126,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,E_6_health_facility_time,,,,,,true,"selected(${E_6_0_health_facility_time_yn}, 'yes')",(.>=0 and .<1440) and not(.=999),,,,,,,,ABvEyuOOP,,127,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple chronic_health_condition,E_7_chronic_health_condition,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,Ebpdil03k,,128,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,E_7_1_chronic_health_condition_other,,,,,,true,"selected(${E_7_chronic_health_condition},'other')",,,,,,,,,CDxrvaWA1,,129,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one freq_unable_access_chronic_care,E_8_freq_unable_access_chronic_care,,,,,,true,"starts-with(${E_7_chronic_health_condition}, 'condition') or selected(${E_7_chronic_health_condition},'other')",,,,,,,,,TkK0XF0Jw,,130,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple health_barriers,E_9_health_barriers,,,,,,true,"${total_health_needed_yes_calc}>0 or not(selected(${E_7_chronic_health_condition},'do_not_know') or selected(${E_7_chronic_health_condition},'prefer_not_to_answer') or selected(${E_7_chronic_health_condition},'none'))","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer')) and (count-selected(.)>1))",,,,,,,,oty9AHjpr,,131,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,health_barriers_note,,,,,,,"${not_enought_healthcare_calc}>0 and selected(${E_9_health_barriers}, 'no_barriers')",,,,,,,,,Tr5pUJhEJ,,132,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,E_9_1_health_barriers_other,,,,,,true,"selected(${E_9_health_barriers}, 'other')",,,,,,,,,keVb9QbAX,,133,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one mhpss,E_10_mhpss,,,,,,true,,,,,,,,,,nf9cYNPFD,,134,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one mhpss_severity,E_11_mhpss_severity,,,,,,true,"selected(${E_10_mhpss},'yes')",,,,,,,,,O61ewc9PN,,135,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple mhpss_support_access,E_12_mhpss_support_access,,,,,,true,"selected(${E_10_mhpss},'yes')","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or  selected(., 'no')) and (count-selected(.)>1))",,,,,,,,uJ6bQxz79,,136,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,E_12_1_mhpss_support_access_other,,,,,,true,"selected(${E_12_mhpss_support_access}, 'other')",,,,,,,,,wJFijt9pN,,137,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple disability_registered,E_13_disability_registered,,,,,,true,,"if(${B_2_hh_size}=1,count-selected(.)=1,not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'no')) and (count-selected(.)>1)) and count-selected(.)<=${B_2_hh_size})",,,,,,,,YIFJYBk4A,,138,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,group_wgss,,,,,,,,,,,,,,,,YFVZWOEN4,,139,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,E_14_wgss_intro,,,,,,false,,,,,,,,,,dTJpE4kvm,,140,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one wgss_seeing,E_15_wgss_seeing,,,,,,true,,,,,,,,,,JRVV2GirU,,141,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one wgss_hearing,E_16_wgss_hearing,,,,,,true,,,,,,,,,,hPY8XTTdl,,142,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one wgss_walking,E_17_wgss_walking,,,,,,true,,,,,,,,,,m6wS9j7mP,,143,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one wgss_cognit,E_18_wgss_cognit,,,,,,true,,,,,,,,,,co2mYQIh4,,144,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one wgss_selfcare,E_19_wgss_selfcare,,,,,,true,,,,,,,,,,htMTkgWvm,,145,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one wgss_comm,E_20_wgss_comm,,,,,,true,,,,,,,,,,r2uw517g0,,146,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,group_wgss,,,,,,,,,,,,,,,,I7fte8Xyr,,147,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,group_health,,,,,,,,,,,,,,,,snJ0fLMf1,,148,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,group_edu,,,,,,,,,,,,,,,,kBYF3EvY0,,149,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,G_1_edu_intro_hh,,,,,,false,${total_edu_access_yes_calc}>0,,,,,,,,,Q0xc7whs3,,150,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one edu_disrupted_air_alerts,G_2_edu_disrupted_air_alerts,,,,,,true,${total_edu_access_yes_calc}>0,,,,,,,,,B5Y3f6ucy,,151,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one edu_support_time,G_3_edu_support_time,,,,,,true,${total_edu_access_yes_calc}>0,,,,,,,,,od6kqrG2y,,152,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,group_edu,,,,,,,,,,,,,,,,RrtWgK8ku,,153,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,group_displacement,,,,,,,,,,,,,,,,gTyndrDVl,,154,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,F_3_displ_intro,,,,,,false,,,,,,,,,,tndiS15Yd,,155,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one habitual_place,F_4_habitual_place,,,,,,true,,,,,,,,,,HGiDX0TwQ,,156,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one intra_idp,F_5_intra_idp,,,,,,true,"selected(${F_4_habitual_place},'yes')",,,,,,,,,731rEAbIS,,157,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one returnee_one,F_6_returnee_one,,,,,,true,"selected(${F_4_habitual_place},'yes')",,,,,,,,,v6xR8Gj1K,,158,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,displ_check,,,,,,,"(${edu_interrupted_displ_calc} > 0 or
+  selected(${E_9_health_barriers}, 'evacuation_displacement')) and 
+selected(${F_4_habitual_place}, 'yes') and 
+selected(${F_5_intra_idp}, 'no') and 
+selected(${F_6_returnee_one}, 'no')",,,,,,,,,vcpb43bZa,,159,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one idp_one,F_7_idp_one,,,,,,true,"selected(${F_4_habitual_place},'no')",,,,,,,,,8EKomiI4k,,160,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one idp_two,F_8_idp_two,,,,,,true,"selected(${F_7_idp_one},'no')",,,,,,,,,iIfwtJxde,,161,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,date,F_10_time_displacement,,,,,,true,"selected(${F_6_returnee_one},'yes') or selected(${F_7_idp_one},'yes') or selected(${F_8_idp_two},'yes')",.>=date('2022-02-01') and .<=today(),,,,,month-year,,,5DKeTQDqw,,162,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,date,F_11_time_leaving_house,,,,,,true,"selected(${F_5_intra_idp},'yes')",.>=date('2022-02-01') and .<=today(),,,,,month-year,,,MF135mUVb,,163,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,date,F_12_returnee_time_back,,,,,,true,"selected(${F_6_returnee_one},'yes')",.>=date('2022-02-01') and .<=today(),,,,,month-year,,,LJdbzHYQh,,164,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,date,F_13_time_arrival,,,,,,true,"selected(${F_5_intra_idp},'yes') or selected(${F_7_idp_one},'yes') or selected(${F_8_idp_two},'yes')",.>=date('2022-02-01') and .<=today(),,,,,month-year,,,01QcUDUJE,,165,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one refugee,F_14_refugee,,,,,,true,"selected(${F_5_intra_idp},'yes') or selected(${F_6_returnee_one},'yes') or selected(${F_7_idp_one},'yes') or selected(${F_8_idp_two},'yes')",,,,,,,,,qk0jtMzEZ,,166,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one oblast_origin,F_15_oblast_origin,,,,,,true,"selected(${F_7_idp_one},'yes') or selected(${F_8_idp_two},'yes')",,,,,,,,,Sa6b326O8,,167,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one registered_idp,F_16_registered_idp,,,,,,true,"not((${B_2_hh_size}=1) and selected(${F_5_intra_idp}, 'no') and selected(${F_7_idp_one}, 'no') and selected(${F_8_idp_two}, 'no'))",,,,,,,,,Cz38YR9DG,,168,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,registered_idp_calc,,,,,"if(starts-with(${F_16_registered_idp}, 'at_least'), 1, 0)",,,,,,,,,,,T0QDKmDss,,169,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,count_idp,,,,,"if(selected(${F_5_intra_idp},'yes') or selected(${F_7_idp_one},'yes') or selected(${F_8_idp_two},'yes'),1,0)",,,,,,,,,,,O6GQYnUdT,,170,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple resons_for_return,F_17_resons_for_return,,,,,,true,"selected(${F_6_returnee_one},'yes')","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer')) and (count-selected(.)>1))",,,,,,,,weZxJjyAx,,171,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,F_17_1_resons_for_return_other,,,,,,true,"selected(${F_17_resons_for_return}, 'other')",,,,,,,,,c4gWODkji,,172,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one evacuee,F_18_evacuee,,,,,,true,"(selected(${F_7_idp_one},'yes') or selected(${F_8_idp_two},'yes')) and ${F_10_time_displacement}> date('2025-01-01')",,,,,,,,,eGm2HScUd,,173,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,group_displacement,,,,,,,,,,,,,,,,eTRf5Mlrl,,174,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,group_cash,,,,,,,,,,,,,,,,tjoccF0bo,,175,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple short_exp_types,H_1_short_exp_types,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'my_household_did_not_spend_any_money_over_the_last_30_days')) and (count-selected(.)>1))",,,,,,,,dFOWmtnux,,176,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,H_1_1_short_exp_types_other,,,,,,true,"selected(${H_1_short_exp_types}, 'other')",,,,,,,,,5Jlcc8vR6,,177,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,fem_hygiene,,,,,,false,"selected(${H_1_short_exp_types}, 'feminine_hygiene_products') and ${mem_woman_girl_menstruation_calc} = 0",,,,,,,,,eFYAxUtZq,,178,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,short_exp_types_group,,,,,,,"not(selected(${H_1_short_exp_types},'my_household_did_not_spend_any_money_over_the_last_30_days') or selected(${H_1_short_exp_types},'do_not_know') or selected(${H_1_short_exp_types},'prefer_not_to_answer') or selected(${H_1_short_exp_types},''))",,,,,,,,,8QK5HJkVc,,179,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_3_0_exp_food_yn,,,,,,true,"selected(${H_1_short_exp_types},'food_items')",,,,,,,,,krCGm4QZ0,,180,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_3_exp_food,,,,,,true,"selected(${H_3_0_exp_food_yn},'yes')",(.>=100 and .<=1000000) and not(.=999),,,,,,,,tSWf71Rbe,,181,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_4_0_exp_clothing_yn,,,,,,true,"selected(${H_1_short_exp_types},'clothing_and_shoes')",,,,,,,,,6hxeZv2WN,,182,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_4_exp_clothing,,,,,,true,"selected(${H_4_0_exp_clothing_yn},'yes')",(.>=100 and .<=1000000) and not(.=999),,,,,,,,wZQHFTPE3,,183,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_5_0_exp_rent_yn,,,,,,true,"selected(${H_1_short_exp_types},'rent_for_shelter_and_or_land')",,,,,,,,,n5TfXGOjS,,184,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_5_exp_rent,,,,,,true,"selected(${H_5_0_exp_rent_yn},'yes')",(.>=100 and .<=3000000) and not(.=999),,,,,,,,acu8UxFRn,,185,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_6_0_exp_water_yn,,,,,,true,"selected(${H_1_short_exp_types},'water')",,,,,,,,,Lddekoam5,,186,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_6_exp_water,,,,,,true,"selected(${H_6_0_exp_water_yn},'yes')",(.>=50 and .<=50000) and not(.=999),,,,,,,,UZyRFbivw,,187,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_7_0_exp_fem_yn,,,,,,true,"selected(${H_1_short_exp_types},'feminine_hygiene_products')",,,,,,,,,WysirhxxX,,188,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_7_exp_fem,,,,,,true,"selected(${H_7_0_exp_fem_yn},'yes')",(.>=50 and .<=10000) and not(.=999),,,,,,,,C7zZs7tW6,,189,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_8_0_exp_hygiene_yn,,,,,,true,"selected(${H_1_short_exp_types},'other_hygiene_items')",,,,,,,,,2i616U7ta,,190,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_8_exp_hygiene,,,,,,true,"selected(${H_8_0_exp_hygiene_yn},'yes')",(.>=100 and .<=100000) and not(.=999),,,,,,,,dJ6OzhNOr,,191,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_9_0_exp_nfi_yn,,,,,,true,"selected(${H_1_short_exp_types},'non_hygiene_non_food_household_items_for_frequent_purchase')",,,,,,,,,e9csirQli,,192,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_9_exp_nfi,,,,,,true,"selected(${H_9_0_exp_nfi_yn},'yes')",(.>=100 and .<=100000) and not(.=999),,,,,,,,xwq23fHVS,,193,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_10_0_exp_utilities_yn,,,,,,true,"selected(${H_1_short_exp_types},'utilities')",,,,,,,,,FajwHhyRt,,194,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_10_exp_utilities,,,,,,true,"selected(${H_10_0_exp_utilities_yn},'yes')",(.>=100 and .<=200000) and not(.=999),,,,,,,,DKGWkwgHS,,195,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_11_0_exp_transportation_yn,,,,,,true,"selected(${H_1_short_exp_types},'transportation')",,,,,,,,,yMmyduJR0,,196,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_11_exp_transportation,,,,,,true,"selected(${H_11_0_exp_transportation_yn},'yes')",(.>=50 and .<=100000) and not(.=999),,,,,,,,qKKSLPAky,,197,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_12_0_exp_fuel_yn,,,,,,true,"selected(${H_1_short_exp_types},'fuel_for_other_purposes')",,,,,,,,,fiPD2OLB7,,198,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_12_exp_fuel,,,,,,true,"selected(${H_12_0_exp_fuel_yn},'yes')",(.>=100 and .<=500000) and not(.=999),,,,,,,,7D6EjRlsQ,,199,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_13_0_exp_communications_yn,,,,,,true,"selected(${H_1_short_exp_types},'communications')",,,,,,,,,GfzNDauSE,,200,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_13_exp_communications,,,,,,true,"selected(${H_13_0_exp_communications_yn},'yes')",(.>=50 and .<=10000) and not(.=999),,,,,,,,9d9g7NX7o,,201,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_14_0_exp_childcare_yn,,,,,,true,"selected(${H_1_short_exp_types},'childcare_elderly_care_care_for_disabled_people')",,,,,,,,,Mk0BEyFlY,,202,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_14_exp_childcare,,,,,,true,"selected(${H_14_0_exp_childcare_yn},'yes')",(.>=100 and .<=100000) and not(.=999),,,,,,,,yrB05zJFT,,203,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_15_0_exp_recreation_yn,,,,,,true,"selected(${H_1_short_exp_types},'recreation_sport_and_culture')",,,,,,,,,l7qwd00nz,,204,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_15_exp_recreation,,,,,,true,"selected(${H_15_0_exp_recreation_yn},'yes')",(.>=100 and .<=1000000) and not(.=999),,,,,,,,jNEDbn2wk,,205,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_16_0_exp_pet_yn,,,,,,true,"selected(${H_1_short_exp_types},'pet_care')",,,,,,,,,sTeTxJkz0,,206,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_16_exp_pet,,,,,,true,"selected(${H_16_0_exp_pet_yn},'yes')",(.>=50 and .<=50000) and not(.=999),,,,,,,,9lHS1SJUy,,207,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_17_0_exp_oth_yn,,,,,,true,"selected(${H_1_short_exp_types},'other')",,,,,,,,,6p4C0jw31,,208,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_17_exp_oth,,,,,,true,"selected(${H_17_0_exp_oth_yn},'yes')",(.>=100 and .<=1000000) and not(.=999),,,,,,,,Q5plnxyo6,,209,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_3_exp_food_calc,,,,,"if(selected(${H_3_0_exp_food_yn},'cannot') or not(selected(${H_1_short_exp_types},'food_items')),0,(${H_3_exp_food}))",,,,,,,,,,,mUAIz7XCm,,210,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_4_exp_clothing_calc,,,,,"if(selected(${H_4_0_exp_clothing_yn},'cannot') or not(selected(${H_1_short_exp_types},'clothing_and_shoes')),0,(${H_4_exp_clothing}))",,,,,,,,,,,r1cXB5x22,,211,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_5_exp_rent_calc,,,,,"if(selected(${H_5_0_exp_rent_yn},'cannot') or not(selected(${H_1_short_exp_types},'rent_for_shelter_and_or_land')),0,(${H_5_exp_rent}))",,,,,,,,,,,itdczJVMJ,,212,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_6_exp_water_calc,,,,,"if(selected(${H_6_0_exp_water_yn},'cannot') or not(selected(${H_1_short_exp_types},'water')),0,(${H_6_exp_water}))",,,,,,,,,,,JXYVImA9d,,213,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_7_exp_fem_calc,,,,,"if(selected(${H_7_0_exp_fem_yn},'cannot') or not(selected(${H_1_short_exp_types},'feminine_hygiene_products')),0,(${H_7_exp_fem}))",,,,,,,,,,,BKbNvQUpO,,214,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_8_exp_hygiene_calc,,,,,"if(selected(${H_8_0_exp_hygiene_yn},'cannot') or not(selected(${H_1_short_exp_types},'other_hygiene_items')),0,(${H_8_exp_hygiene}))",,,,,,,,,,,h0a2KPx8e,,215,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_9_exp_nfi_calc,,,,,"if( selected(${H_9_0_exp_nfi_yn}, 'cannot') or not(selected(${H_1_short_exp_types}, 'non_hygiene_non_food_household_items_for_frequent_purchase')),0, ${H_9_exp_nfi})",,,,,,,,,,,IE8yLLZGv,,216,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_10_exp_utilities_calc,,,,,"if(selected(${H_10_0_exp_utilities_yn},'cannot') or not(selected(${H_1_short_exp_types},'utilities')),0,(${H_10_exp_utilities}))",,,,,,,,,,,J4f5GsAKj,,217,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_11_exp_transportation_calc,,,,,"if(selected(${H_11_0_exp_transportation_yn},'cannot') or not(selected(${H_1_short_exp_types},'transportation')),0,(${H_11_exp_transportation}))",,,,,,,,,,,awsLQBAMu,,218,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_12_exp_fuel_calc,,,,,"if(selected(${H_12_0_exp_fuel_yn},'cannot') or not(selected(${H_1_short_exp_types},'fuel_for_other_purposes')),0,(${H_12_exp_fuel}))",,,,,,,,,,,rhosM2jt1,,219,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_13_exp_communications_calc,,,,,"if(selected(${H_13_0_exp_communications_yn},'cannot') or not(selected(${H_1_short_exp_types},'communications')),0,(${H_13_exp_communications}))",,,,,,,,,,,YL68pJwLX,,220,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_14_exp_childcare_calc,,,,,"if(selected(${H_14_0_exp_childcare_yn},'cannot') or not(selected(${H_1_short_exp_types},'childcare_elderly_care_care_for_disabled_people')),0,(${H_14_exp_childcare}))",,,,,,,,,,,TmD7Rb6Uf,,221,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_15_exp_recreation_calc,,,,,"if(selected(${H_15_0_exp_recreation_yn},'cannot') or not(selected(${H_1_short_exp_types},'recreation_sport_and_culture')),0,(${H_15_exp_recreation}))",,,,,,,,,,,KWgVuzwa4,,222,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_16_exp_pet_calc,,,,,"if(selected(${H_16_0_exp_pet_yn},'cannot') or not(selected(${H_1_short_exp_types},'pet_care')),0,(${H_16_exp_pet}))",,,,,,,,,,,EzlWEFjrp,,223,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_17_exp_oth_calc,,,,,"if(selected(${H_17_0_exp_oth_yn},'cannot') or not(selected(${H_1_short_exp_types},'other')),0,(${H_17_exp_oth}))",,,,,,,,,,,dtD1xRyi1,,224,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,short_exp_types_group,,,,,,,,,,,,,,,,XqAZJfhhc,,225,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,total_short_exp_calc,,,,,"if(
+  selected(${H_1_short_exp_types}, 'my_household_did_not_spend_any_money_over_the_last_30_days') or 
+  selected(${H_1_short_exp_types}, 'do_not_know') or 
+  selected(${H_1_short_exp_types}, 'prefer_not_to_answer'),
+  0,
+  (${H_3_exp_food_calc} + ${H_4_exp_clothing_calc} + ${H_5_exp_rent_calc} + ${H_6_exp_water_calc} + ${H_7_exp_fem_calc} + ${H_8_exp_hygiene_calc} + ${H_9_exp_nfi_calc} + ${H_10_exp_utilities_calc} + ${H_11_exp_transportation_calc} + ${H_12_exp_fuel_calc} + ${H_13_exp_communications_calc} + ${H_14_exp_childcare_calc} + ${H_15_exp_recreation_calc} + ${H_16_exp_pet_calc} + ${H_17_exp_oth_calc})
+)",,,,,,,,,,,6tf6PrPkJ,,226,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_18_0_exp_heating_yn,,,,,,true,,,,,,,,,,sRD5o2kx6,,227,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_18_exp_heating,,,,,,true,"selected(${H_18_0_exp_heating_yn},'yes')",(.>=100 and .<=200000) and not(.=999) or (.=0),,,,,,,,dYURqBLxH,,228,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple long_exp_types,H_19_long_exp_types,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'my_household_did_not_spend_any_money_over_the_last_6_months')) and (count-selected(.)>1))",,,,,,,,rfFnOL9FK,,229,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,H_19_1_long_exp_types_other,,,,,,true,"selected(${H_19_long_exp_types}, 'other')",,,,,,,,,pUSPStoYR,,230,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,long_exp_types_group,,,,,,,"not(selected(${H_19_long_exp_types},'my_household_did_not_spend_any_money_over_the_last_6_months') or selected(${H_19_long_exp_types},'do_not_know') or selected(${H_19_long_exp_types},'prefer_not_to_answer') or selected(${H_19_long_exp_types},''))",,,,,,,,,ZwviAzvO8,,231,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_21_0_long_exp_shelter_yn,,,,,,true,"selected(${H_19_long_exp_types},'shelter_maintenance_or_repair')",,,,,,,,,gVPKAj68I,,232,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_21_long_exp_shelter,,,,,,true,"selected(${H_21_0_long_exp_shelter_yn},'yes')",(.>=100 and .<=5000000) and not(.=999),,,,,,,,CiHDVqUBO,,233,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_22_0_long_exp_nfi_yn,,,,,,true,"selected(${H_19_long_exp_types},'non_food_household_items_for_infrequent_purchase')",,,,,,,,,Uo4XiqdOu,,234,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_22_long_exp_nfi,,,,,,true,"selected(${H_22_0_long_exp_nfi_yn},'yes')",(.>=100 and .<=300000) and not(.=999),,,,,,,,2crnzCKan,,235,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_23_0_long_exp_health_yn,,,,,,true,"selected(${H_19_long_exp_types},'health_related_expenditures')",,,,,,,,,kVurA7r8q,,236,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_23_long_exp_health,,,,,,true,"selected(${H_23_0_long_exp_health_yn},'yes')",(.>=100 and .<=3000000)  and not(.=999),,,,,,,,hEBTTRXpd,,237,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_24_0_long_exp_education_yn,,,,,,true,"selected(${H_19_long_exp_types},'education_related_expenditures')",,,,,,,,,oMt6uxAVh,,238,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_24_long_exp_education,,,,,,true,"selected(${H_24_0_long_exp_education_yn},'yes')",(.>=100 and .<=500000) and not(.=999),,,,,,,,s4Ll2sZlt,,239,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_25_0_long_exp_debt_yn,,,,,,true,"selected(${H_19_long_exp_types},'debt_repayment')",,,,,,,,,SrMGSMXs4,,240,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_25_long_exp_debt,,,,,,true,"selected(${H_25_0_long_exp_debt_yn},'yes')",(.>=100 and .<=3000000) and not(.=999),,,,,,,,jECyyKcbB,,241,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_26_0_long_exp_oth_yn,,,,,,true,"selected(${H_19_long_exp_types},'other')",,,,,,,,,Ep8bnZzSN,,242,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_26_long_exp_oth,,,,,,true,"selected(${H_26_0_long_exp_oth_yn},'yes')",(.>=100  and .<=3000000) and not(.=999),,,,,,,,yx7yOz5gl,,243,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_21_long_exp_shelter_calc,,,,,"if(selected(${H_21_0_long_exp_shelter_yn},'cannot') or not(selected(${H_19_long_exp_types},'shelter_maintenance_or_repair')),0,(${H_21_long_exp_shelter}))",,,,,,,,,,,qVb2wIEo3,,244,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_22_long_exp_nfi_calc,,,,,"if(selected(${H_22_0_long_exp_nfi_yn},'cannot') or not(selected(${H_19_long_exp_types},'non_food_household_items_for_infrequent_purchase')),0,(${H_22_long_exp_nfi}))",,,,,,,,,,,PSGCWgs6B,,245,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_23_long_exp_health_calc,,,,,"if(selected(${H_23_0_long_exp_health_yn},'cannot') or not(selected(${H_19_long_exp_types},'health_related_expenditures')),0,(${H_23_long_exp_health}))",,,,,,,,,,,KkZkkDl8M,,246,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_24_long_exp_education_calc,,,,,"if(selected(${H_24_0_long_exp_education_yn},'cannot') or not(selected(${H_19_long_exp_types},'education_related_expenditures')),0,(${H_24_long_exp_education}))",,,,,,,,,,,EjoacQW27,,247,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_25_long_exp_debt_calc,,,,,"if(selected(${H_25_0_long_exp_debt_yn},'cannot') or not(selected(${H_19_long_exp_types},'debt_repayment')),0,(${H_25_long_exp_debt}))",,,,,,,,,,,1uFioZ50c,,248,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_26_long_exp_oth_calc,,,,,"if(selected(${H_26_0_long_exp_oth_yn},'cannot') or not(selected(${H_19_long_exp_types},'other')),0,(${H_26_long_exp_oth}))",,,,,,,,,,,SXn9idpOZ,,249,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,long_exp_types_group,,,,,,,,,,,,,,,,2RMOoRvTC,,250,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,total_long_exp_calc,,,,,"if(
+  selected(${H_19_long_exp_types}, 'my_household_did_not_spend_any_money_over_the_last_6_months') or 
+  selected(${H_19_long_exp_types}, 'do_not_know') or 
+  selected(${H_19_long_exp_types}, 'prefer_not_to_answer'),
+  0,
+  ((${H_21_long_exp_shelter_calc} + ${H_22_long_exp_nfi_calc} + ${H_23_long_exp_health_calc} + ${H_24_long_exp_education_calc} + ${H_25_long_exp_debt_calc} + ${H_26_long_exp_oth_calc}) div 6)
+)",,,,,,,,,,,xKwd307wh,,251,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,total_exp_calc,,,,,${total_short_exp_calc}+${total_long_exp_calc},,,,,,,,,,,jqMRuMqV3,,252,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,total_exp_note,,,,,,,,,,,,,,,,oCqbK0rOT,,253,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple miss_nfi,H_27_miss_nfi,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,5UzFKpuEH,,254,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,H_27_fem_hygiene,,,,,,false,"selected(${H_27_miss_nfi}, 'feminine_hygiene_items') and ${mem_woman_girl_menstruation_calc} = 0",,,,,,,,,FCQVvo2eJ,,255,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,H_27_baby_daipers,,,,,,false,"selected(${H_27_miss_nfi}, 'baby_diapers') and ${count_baby_in_diapers} = 0",,,,,,,,,5naIAtFO4,,256,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,H_27_1_miss_nfi_other,,,,,,true,"selected(${H_27_miss_nfi}, 'other')",,,,,,,,,Kiu1oLkGy,,257,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,H_28_income_intro,,,,,,false,,,,,,,,,,2DQzBUK9d,,258,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple income_sources,H_29_income_sources,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'my_household_did_not_receive_any_monetary_income_over_the_last_4_weeks')) and (count-selected(.)>1))",,,,,,,,zPRFiFmFp,,259,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,H_29_1_income_sources_other,,,,,,true,"selected(${H_29_income_sources}, 'other')",,,,,,,,,pIUVyJvAB,,260,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,smth_wrong_incomes_1,,,,,,,"(selected(${H_29_income_sources},'salaried_work_including_from_household_members_serving_away_from_the_home_in_the_military') or selected(${H_29_income_sources},'informal_unofficial_labour') or selected(${H_29_income_sources},'income_from_own_business_or_merchant_activity')) and (${count_employed}<1)",,,,,,,,,VGSoibg7s,,261,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,smth_wrong_incomes_2,,,,,,,"not(selected(${H_29_income_sources},'salaried_work_including_from_household_members_serving_away_from_the_home_in_the_military') or selected(${H_29_income_sources},'informal_unofficial_labour') or selected(${H_29_income_sources},'income_from_own_business_or_merchant_activity')) and (${count_employed}>=1)",,,,,,,,,1FelnPUzz,,262,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,smth_wrong_incomes_3,,,,,,,"(selected(${H_29_income_sources},'pension')) and (${count_retired}<1)",,,,,,,,,pVWL4Q74k,,263,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,smth_wrong_incomes_4,,,,,,,"not(selected(${H_29_income_sources},'pension')) and (${count_retired}>=1)",,,,,,,,,p31iJfkIA,,264,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,smth_wrong_incomes_5,,,,,,,"(selected(${H_29_income_sources},'idp_benefits_from_government')) and not(selected(${F_16_registered_idp},'at_least_one_or_more_people_have_an_idp_certificate_and_receive_idp_payments'))",,,,,,,,,vYcrR08mh,,265,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,smth_wrong_incomes_6,,,,,,,"not(selected(${H_29_income_sources},'idp_benefits_from_government')) and (selected(${F_16_registered_idp},'at_least_one_or_more_people_have_an_idp_certificate_and_receive_idp_payments'))",,,,,,,,,cqSD3oAlB,,266,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,income_amount_group,,,,,,,"not(selected(${H_29_income_sources},'my_household_did_not_receive_any_monetary_income_over_the_last_4_weeks') or selected(${H_29_income_sources},'do_not_know') or selected(${H_29_income_sources},'prefer_not_to_answer') or selected(${H_29_income_sources},''))",,,,,,,,,2qsq6nxQ4,,267,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_31_0_inc_salary_yn,,,,,,true,"selected(${H_29_income_sources},'salaried_work_including_from_household_members_serving_away_from_the_home_in_the_military')",,,,,,,,,vMukzKRMi,,268,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_31_inc_salary,,,,,,true,"selected(${H_31_0_inc_salary_yn},'yes')",(.>=1600 and .<5000000 )  and not(.=999),,,,,,,,0NFH6vmoV,,269,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_32_0_inc_informal_yn,,,,,,true,"selected(${H_29_income_sources},'informal_unofficial_labour')",,,,,,,,,hKNz0KIrL,,270,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_32_inc_informal,,,,,,true,"selected(${H_32_0_inc_informal_yn},'yes')",(.>=100 and .<500000)  and not(.=999),,,,,,,,YhFQ8HqiI,,271,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_33_0_inc_business_yn,,,,,,true,"selected(${H_29_income_sources},'income_from_own_business_or_merchant_activity')",,,,,,,,,TDSkVRMpV,,272,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_33_inc_business,,,,,,true,"selected(${H_33_0_inc_business_yn},'yes')",(.>=100 and .<5000000)  and not(.=999),,,,,,,,1kG7j9hAt,,273,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_34_0_inc_production_yn,,,,,,true,"selected(${H_29_income_sources},'income_from_own_production')",,,,,,,,,XXhNuYyns,,274,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_34_inc_production,,,,,,true,"selected(${H_34_0_inc_production_yn},'yes')",(.>=100 and .<200000)  and not(.=999),,,,,,,,kKyfkd2i6,,275,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_35_0_inc_idp_yn,,,,,,true,"selected(${H_29_income_sources},'idp_benefits_from_government')",,,,,,,,,Hl5FpvE5n,,276,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_35_inc_idp,,,,,,true,"selected(${H_35_0_inc_idp_yn},'yes')",(.>=2000 and .<40000)  and not(.=999),,,,,,,,XBZhfLGIX,,277,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_36_0_inc_pension_yn,,,,,,true,"selected(${H_29_income_sources},'pension')",,,,,,,,,nrXKvkIlP,,278,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_36_inc_pension,,,,,,true,"selected(${H_36_0_inc_pension_yn},'yes')",(.>=2300 and .<150000)  and not(.=999),,,,,,,,7tUVg3DKU,,279,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_37_0_inc_regular_benefit_yn,,,,,,true,"selected(${H_29_income_sources},'regular_government_social_benefits')",,,,,,,,,1OSyFGCng,,280,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_37_inc_regular_benefit,,,,,,true,"selected(${H_37_0_inc_regular_benefit_yn},'yes')",(.>=300 and .<2000000)  and not(.=999),,,,,,,,QKqucxRN8,,281,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_38_0_inc_rent_yn,,,,,,true,"selected(${H_29_income_sources},'income_from_rent')",,,,,,,,,BWvx8Df4S,,282,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_38_inc_rent,,,,,,true,"selected(${H_38_0_inc_rent_yn},'yes')",(.>=100 and .<3000000)  and not(.=999),,,,,,,,ao2j94X8e,,283,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_39_0_inc_remittance_yn,,,,,,true,"selected(${H_29_income_sources},'remittances')",,,,,,,,,TtxyO5cLX,,284,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_39_inc_remittance,,,,,,true,"selected(${H_39_0_inc_remittance_yn},'yes')",(.>=100 and .<3000000)  and not(.=999),,,,,,,,4mv86NE62,,285,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_40_0_exp_humanitarian_yn,,,,,,true,"selected(${H_29_income_sources},'humanitarian_aid')",,,,,,,,,wWSrl4Yvg,,286,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_40_exp_humanitarian,,,,,,true,"selected(${H_40_0_exp_humanitarian_yn},'yes')",(.>=100 and .<2000000)  and not(.=999),,,,,,,,YfFPUPWgm,,287,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_41_0_inc_loan_yn,,,,,,true,"selected(${H_29_income_sources},'loans_or_support_from_family_and_friends_in_ukraine')",,,,,,,,,FcRe2oomo,,288,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_41_inc_loan,,,,,,true,"selected(${H_41_0_inc_loan_yn},'yes')",(.>=100 and .<1000000)  and not(.=999),,,,,,,,P8g3Xr7mJ,,289,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_42_0_inc_charity_yn,,,,,,true,"selected(${H_29_income_sources},'loans_support_or_charitable_donations_from_community_members')",,,,,,,,,RyGYbZB3i,,290,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_42_inc_charity,,,,,,true,"selected(${H_42_0_inc_charity_yn},'yes')",(.>=100 and .<1000000)  and not(.=999),,,,,,,,7WRzvzoV8,,291,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_43_0_inc_irregular_benefit_yn,,,,,,true,"selected(${H_29_income_sources},'one_off_government_assistance')",,,,,,,,,LCH4Ih0y7,,292,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_43_inc_irregular_benefit,,,,,,true,"selected(${H_43_0_inc_irregular_benefit_yn},'yes')",(.>=100 and .<16000000)  and not(.=999),,,,,,,,PvqvWnPxr,,293,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,H_44_0_inc_oth_yn,,,,,,true,"selected(${H_29_income_sources},'other')",,,,,,,,,z7fqXteH2,,294,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,H_44_inc_oth,,,,,,true,"selected(${H_44_0_inc_oth_yn},'yes')",(.>=100 and .<5000000)  and not(.=999),,,,,,,,fVjVG2mBt,,295,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_31_inc_salary_calc,,,,,"if(selected(${H_31_0_inc_salary_yn},'cannot') or not(selected(${H_29_income_sources},'salaried_work_including_from_household_members_serving_away_from_the_home_in_the_military')),0,(${H_31_inc_salary}))",,,,,,,,,,,Sqiw8l27u,,296,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_32_inc_informal_calc,,,,,"if(selected(${H_32_0_inc_informal_yn},'cannot') or not(selected(${H_29_income_sources},'informal_unofficial_labour')),0,(${H_32_inc_informal}))",,,,,,,,,,,v5Rcmonxh,,297,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_33_inc_business_calc,,,,,"if(selected(${H_33_0_inc_business_yn},'cannot') or not(selected(${H_29_income_sources},'income_from_own_business_or_merchant_activity')),0,(${H_33_inc_business}))",,,,,,,,,,,PX5JdUvdz,,298,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_34_inc_production_calc,,,,,"if(selected(${H_34_0_inc_production_yn},'cannot') or not(selected(${H_29_income_sources},'income_from_own_production')),0,(${H_34_inc_production}))",,,,,,,,,,,kcKRfGVoN,,299,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_35_inc_idp_calc,,,,,"if(selected(${H_35_0_inc_idp_yn},'cannot') or not(selected(${H_29_income_sources},'idp_benefits_from_government')),0,(${H_35_inc_idp}))",,,,,,,,,,,Cv2JABN2x,,300,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_36_inc_pension_calc,,,,,"if(selected(${H_36_0_inc_pension_yn},'cannot') or not(selected(${H_29_income_sources},'pension')),0,(${H_36_inc_pension}))",,,,,,,,,,,5OX7wuPp6,,301,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_37_inc_regular_benefit_calc,,,,,"if(selected(${H_37_0_inc_regular_benefit_yn},'cannot') or not(selected(${H_29_income_sources},'regular_government_social_benefits')),0,(${H_37_inc_regular_benefit}))",,,,,,,,,,,XgdiHk31S,,302,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_38_inc_rent_calc,,,,,"if(selected(${H_38_0_inc_rent_yn},'cannot') or not(selected(${H_29_income_sources},'income_from_rent')),0,(${H_38_inc_rent}))",,,,,,,,,,,59eojexi5,,303,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_39_inc_remittance_calc,,,,,"if(selected(${H_39_0_inc_remittance_yn},'cannot') or not(selected(${H_29_income_sources},'remittances')),0,(${H_39_inc_remittance}))",,,,,,,,,,,NwHJWZcZE,,304,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_40_exp_humanitarian_calc,,,,,"if(selected(${H_40_0_exp_humanitarian_yn},'cannot') or not(selected(${H_29_income_sources},'humanitarian_aid')),0,(${H_40_exp_humanitarian}))",,,,,,,,,,,DqL3m0CuX,,305,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_41_inc_loan_calc,,,,,"if(selected(${H_41_0_inc_loan_yn},'cannot') or not(selected(${H_29_income_sources},'loans_or_support_from_family_and_friends_in_ukraine')),0,(${H_41_inc_loan}))",,,,,,,,,,,cz52Xz9T7,,306,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_42_inc_charity_calc,,,,,"if(selected(${H_42_0_inc_charity_yn},'cannot') or not(selected(${H_29_income_sources},'loans_support_or_charitable_donations_from_community_members')),0,(${H_42_inc_charity}))",,,,,,,,,,,otbURBL1a,,307,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_43_inc_irregular_benefit_calc,,,,,"if(selected(${H_43_0_inc_irregular_benefit_yn},'cannot') or not(selected(${H_29_income_sources},'one_off_government_assistance')),0,(${H_43_inc_irregular_benefit}))",,,,,,,,,,,4c1dcmOUo,,308,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,H_44_inc_oth_calc,,,,,"if(selected(${H_44_0_inc_oth_yn},'cannot') or not(selected(${H_29_income_sources},'other')),0,(${H_44_inc_oth}))",,,,,,,,,,,STTZPmEG2,,309,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,total_income_calc,,,,,"${H_31_inc_salary_calc} +
+${H_32_inc_informal_calc} +
+${H_33_inc_business_calc} +
+${H_34_inc_production_calc} +
+${H_35_inc_idp_calc} +
+${H_36_inc_pension_calc} +
+${H_37_inc_regular_benefit_calc} +
+${H_38_inc_rent_calc} +
+${H_39_inc_remittance_calc} +
+${H_40_exp_humanitarian_calc} +
+${H_41_inc_loan_calc} +
+${H_42_inc_charity_calc} +
+${H_43_inc_irregular_benefit_calc} +
+${H_44_inc_oth_calc}",,,,,,,,,,,kjh6E6NA0,,310,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,total_income_note,,,,,,,,,,,,,,,,llZ2f0JLV,,311,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,income_amount_group,,,,,,,,,,,,,,,,oXReyiFQa,,312,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one support_regular,H_45_support_regular,,,,,,true,"selected(${H_29_income_sources},'remittances') or selected(${H_29_income_sources},'loans_or_support_from_family_and_friends_in_ukraine') or selected(${H_29_income_sources},'loans_support_or_charitable_donations_from_community_members')",,,,,,,,,jj6un6XgA,,313,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one debt,H_46_debt,,,,,,true,,,,,,,,,,hlYvedeIW,,314,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple debt_reason,H_47_debt_reason,,,,,,true,"selected(${H_46_debt},'yes')","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer')) and (count-selected(.)>1))",,,,,,,,zX1kKrjjH,,315,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,urgent_travel_related_to_displacement_for_your_household_note,,,,,,,"selected(${H_47_debt_reason},'urgent_travel_related_to_displacement_for_your_household') and ${count_idp}=0",,,,,,,,,q895CUg10,,316,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,H_47_1_debt_reason_other,,,,,,true,"selected(${H_47_debt_reason}, 'other')",,,,,,,,,gPUBAyeV4,,317,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,group_cash,,,,,,,,,,,,,,,,HnWAzYDra,,318,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,group_livelihoods,,,,,,,,,,,,,,,,x62Okif2n,,319,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple challenges_agriculture,I_1_challenges_agriculture,,,,,,true,"selected(${H_29_income_sources},'income_from_own_production')","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'no_challenges')) and (count-selected(.)>1))",,,,,,,,IvO5p57MV,,320,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,I_1_1_challenges_agriculture_other,,,,,,true,"selected(${I_1_challenges_agriculture}, 'other')",,,,,,,,,FLvVzXGlu,,321,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,I_2_lcs_intro,,,,,,false,,,,,,,,,,DRhBuwQUR,,322,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one lcs_hh_assets,I_3_lcs_hh_assets,,,,,,true,,,,,,,,,,vjVIFKkwB,,323,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one lcs_savings,I_4_lcs_savings,,,,,,true,,,,,,,,,,LokebpbC9,,324,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one lcs_borrowed_food,I_5_lcs_borrowed_food,,,,,,true,,"not(selected(${H_47_debt_reason}, 'domestic_consumption_for_your_household')) or selected(., 'yes') or selected(., 'no_have_already_exhausted_this_coping_strategy_and_cannot_use_it_again')",,,,,,,,YaNSmL4nL,,325,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one lcs_job,I_6_lcs_job,,,,,,true,,,,,,,,,,OryIy6NLc,,326,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,lcs_job_note,,,,,,,"selected(${I_6_lcs_job}, 'yes') and ${count_employed} = 0",,,,,,,,,TocKXn6kf,,327,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one lcs_prod_assets,I_7_lcs_prod_assets,,,,,,true,,,,,,,,,,jjynMfzBN,,328,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one lcs_health,I_8_lcs_health,,,,,,true,,,,,,,,,,ZyQUUadBn,,329,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one lcs_move,I_9_lcs_move,,,,,,true,,,,,,,,,,QvuHkrPiV,,330,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one lcs_sell_house,I_10_lcs_sell_house,,,,,,true,,,,,,,,,,6a188Gk8n,,331,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one lcs_degrading,I_11_lcs_degrading,,,,,,true,,,,,,,,,,hKU3axh4m,,332,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one lcs_ask_stranger,I_12_lcs_ask_stranger,,,,,,true,,,,,,,,,,YWzqrFEYB,,333,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple lcs_reason,I_13_lcs_reason,,,,,,true,"selected(${I_3_lcs_hh_assets}, 'yes') or selected(${I_4_lcs_savings}, 'yes') or selected(${I_5_lcs_borrowed_food}, 'yes') or selected(${I_6_lcs_job}, 'yes') or selected(${I_7_lcs_prod_assets}, 'yes') or selected(${I_8_lcs_health}, 'yes') or selected(${I_9_lcs_move}, 'yes') or selected(${I_10_lcs_sell_house}, 'yes') or selected(${I_11_lcs_degrading}, 'yes') or selected(${I_12_lcs_ask_stranger}, 'yes')","not(selected(.,'do_not_know') and (count-selected(.)>1))",,,,,,,,xADaS8tCI,,334,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,I_13_1_lcs_reason_other,,,,,,true,"selected(${I_13_lcs_reason}, 'other')",,,,,,,,,5iAh5QJLx,,335,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,group_livelihoods,,,,,,,,,,,,,,,,opnbR3YNt,,336,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,group_protection,,,,,,,,,,,,,,,,6RZ2nL4IN,,337,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,J_1_protection_intro,,,,,,false,,,,,,,,,,SOXvCNN5z,,338,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one conflict_exposure_shelling,J_2_conflict_exposure_shelling,,,,,,true,,,,,,,,,,Xv3amgGYh,,339,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one conflict_exposure_shelling_freq,J_3_conflict_exposure_shelling_freq,,,,,,true,"selected(${J_2_conflict_exposure_shelling}, 'yes')",,,,,,,,,YxW8s4bWh,,340,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one conflict_exposure_attacks,J_4_conflict_exposure_attacks,,,,,,true,,,,,,,,,,EIYNHdzAR,,341,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one conflict_exposure_attacks_freq,J_5_conflict_exposure_attacks_freq,,,,,,true,"selected(${J_4_conflict_exposure_attacks}, 'yes')",,,,,,,,,hOpUFQnwK,,342,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple gen_safety_incidents,J_6_gen_safety_incidents,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,jZDTgGgZJ,,343,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,J_6_0_gen_safety_incidents_other,,,,,,true,"selected(${J_6_gen_safety_incidents}, 'other')",,,,,,,,,LQDYblYs4,,344,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,J_7_concern_note,,,,,,false,,,,,,,,,,YSrK5B2I4,,345,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one risk_concern,J_8_risk_concern,,,,,,true,,,,,,,,,,ZsOatJmho,,346,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one leave_concern,J_9_leave_concern,,,,,,true,,,,,,,,,,6zAcdiK72,,347,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one prot_concern_hh_freq_violence,J_10_prot_concern_hh_freq_violence,,,,,,true,,,,,,,,,,aLNuDJZuH,,348,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one prot_concern_hh_freq_discrimination,J_11_prot_concern_hh_freq_discrimination,,,,,,true,,,,,,,,,,UJNxsDyBs,,349,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one prot_concern_hh_freq_kidnapping,J_12_prot_concern_hh_freq_kidnapping,,,,,,true,,,,,,,,,,tpdcVYUtU,,350,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple concerns_women,J_13_concerns_women,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,hEFjLJDiQ,,351,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,J_13_1_concerns_women_other,,,,,,true,"selected(${J_13_concerns_women}, 'other')",,,,,,,,,C6mlmXQzU,,352,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one women_walk,J_14_women_walk,,,,,,true,${total_hh_mem_woman_girl_calc}>0,,,,,,,,,xdbYZoMf2,,353,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple women_avoid,J_15_women_avoid,,,,,,true,"not(selected(${J_13_concerns_women}, 'none'))","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,vn7sW1eBR,,354,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,J_15_1_women_avoid_other,,,,,,true,"selected(${J_15_women_avoid}, 'other')",,,,,,,,,nrINdxgj5,,355,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple concerns_men,J_16_concerns_men,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,XsBxexA0R,,356,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,J_16_1_concerns_men_other,,,,,,true,"selected(${J_16_concerns_men}, 'other')",,,,,,,,,xcJtpIX6r,,357,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple concerns_children,J_17_concerns_children,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,4o7bcjQoV,,358,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,J_17_1_concerns_children_other,,,,,,true,"selected(${J_17_concerns_children}, 'other')",,,,,,,,,2sISWga3R,,359,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple concerns_hlp,J_18_concerns_hlp,,,,,,true,,"not((selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,8N5hgg4xG,,360,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,J_18_1_concerns_hlp_other,,,,,,true,"selected(${J_18_concerns_hlp}, 'other')",,,,,,,,,7XRxLE26O,,361,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one uxo_present,J_19_uxo_present,,,,,,true,,,,,,,,,,QaaYH3BrQ,,362,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one uxo_affects,J_21_uxo_affects,,,,,,true,"not(selected(${J_19_uxo_present}, 'no') or selected(${J_19_uxo_present},'do_not_know') or selected(${J_19_uxo_present},'prefer_not_to_answer') or selected(${J_19_uxo_present}, ''))",,,,,,,,,cb0Pxcseg,,363,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,J_20_eo_trained,,,,,,true,,.>=0 and .<50,,,,,,,,WgY9uPbjO,,364,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,group_protection,,,,,,,,,,,,,,,,hEUhEJW5P,,365,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,group_snfi,,,,,,,,,,,,,,,,NBd0knICR,,366,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,K_1_snfi_intro,,,,,,false,,,,,,,,,,YrMm7ZSzt,,367,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one shelter_situation,K_2_shelter_situation,,,,,,true,,,,,,,,,,NyX83eRHq,,368,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,K_2_1_shelter_situation_other,,,,,,true,"selected(${K_2_shelter_situation}, 'other')",,,,,,,,,Okvg7krP8,,369,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one shelter_type,K_3_shelter_type,,,,,,true,"not(selected(${K_2_shelter_situation}, 'collective_center') or selected(${K_2_shelter_situation},'no_shelter') or selected(${K_2_shelter_situation},'prefer_not_to_answer') or selected(${K_2_shelter_situation}, 'do_not_know') or selected(${K_2_shelter_situation}, ''))",,,,,,,,,ZoH4a1HD9,,370,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,K_3_1_shelter_type_other,,,,,,true,"selected(${K_3_shelter_type}, 'other')",,,,,,,,,nORkLbvc9,,371,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,K_4_0_square_meters_yn,,,,,,true,"not(selected(${K_2_shelter_situation}, 'collective_center') or selected(${K_2_shelter_situation},'no_shelter') or selected(${K_2_shelter_situation},'prefer_not_to_answer') or selected(${K_2_shelter_situation}, 'do_not_know') or selected(${K_2_shelter_situation}, ''))",,,,,,,,,6kh79l2js,,372,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,K_4_square_meters,,,,,,true,"selected(${K_4_0_square_meters_yn},'yes')",.> 0 and .<999,,,,,,,,5J5wrgkGy,,373,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,K_5_individuals_shelter,,,,,,true,"not(selected(${K_2_shelter_situation}, 'collective_center') or selected(${K_2_shelter_situation},'no_shelter') or selected(${K_2_shelter_situation},'prefer_not_to_answer') or selected(${K_2_shelter_situation}, 'do_not_know') or selected(${K_2_shelter_situation}, ''))","not(.!=${B_2_hh_size} and selected(${K_2_shelter_situation},'individual_shelter')) and .>0 and .<40",,,,,,,,Obv60zxwn,,374,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one occupancy_arrang,K_6_occupancy_arrang,,,,,,true,"not(selected(${K_2_shelter_situation},'no_shelter') or selected(${K_2_shelter_situation},'collective_center') or selected(${K_2_shelter_situation},'prefer_not_to_answer') or selected(${K_2_shelter_situation}, 'do_not_know') or selected(${K_2_shelter_situation}, ''))","not(selected(${K_2_shelter_situation}, 'hosted_by_friends_relatives') and 
+    (selected(., 'owned_property') or 
+     selected(., 'rented') or 
+     selected(., 'no_occupancy_agreement_squatting')))",,,,,,,,2hBheXnJX,,375,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one evict_risk,K_7_evict_risk,,,,,,true,"not(selected(${K_2_shelter_situation},'no_shelter') or selected(${K_2_shelter_situation},'prefer_not_to_answer') or selected(${K_2_shelter_situation}, 'do_not_know') or selected(${K_2_shelter_situation}, ''))",,,,,,,,,9ljSCPtb3,,376,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple evict_threat,K_8_evict_threat,,,,,,true,"selected(${K_7_evict_risk}, 'yes')","not((
+  selected(., 'no') or 
+  selected(., 'prefer_not_to_answer') or 
+  selected(., 'do_not_know') or 
+  selected(., 'did_not_receive_direct_threats_but_we_are_under_conditions_that_put_as_at_risk_of_being_evicted_such_being_on_a_land_without_lease_agreement')
+) and count-selected(.) > 1)",,,,,,,,FxMXM2FuO,,377,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple shelter_issues,K_9_shelter_issues,,,,,,true,"not(selected(${K_2_shelter_situation},'no_shelter') or selected(${K_2_shelter_situation},'prefer_not_to_answer') or selected(${K_2_shelter_situation}, 'do_not_know') or selected(${K_2_shelter_situation}, ''))","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'no_issues')) and (count-selected(.)>1))",,,,,,,,YSQazkBPD,,378,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,K_9_1_shelter_issues_other,,,,,,true,"selected(${K_9_shelter_issues}, 'other')",,,,,,,,,HdAsRS2H1,,379,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one shelter_damage,K_10_shelter_damage,,,,,,true,"not(selected(${K_2_shelter_situation},'no_shelter') or selected(${K_2_shelter_situation},'prefer_not_to_answer') or selected(${K_2_shelter_situation}, 'do_not_know') or selected(${K_2_shelter_situation}, ''))",,,,,,,,,H9uEMKixK,,380,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,shelter_damage_note,,,,,,false,"selected(${K_10_shelter_damage}, 'no') and selected(${H_47_debt_reason},'shelter_repair_for_your_houseold')",,,,,,,,,qmOnmompo,,381,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one shelter_damage_repaired,K_11_shelter_damage_repaired,,,,,,true,"selected(${K_10_shelter_damage}, 'yes')",,,,,,,,,Jx6S5yvdg,,382,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple shelter_damage_repaired_reasons,K_12_shelter_damage_repaired_reasons,,,,,,true,"selected(${K_11_shelter_damage_repaired}, 'no')","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,uo6icuMhN,,383,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,K_12_1_shelter_damage_repaired_reasons_other,,,,,,true,"selected(${K_12_shelter_damage_repaired_reasons}, 'other')",,,,,,,,,Eup1M7zBH,,384,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one shelter_damage_type,K_13_shelter_damage_type,,,,,,true,"selected(${K_10_shelter_damage}, 'yes')",,,,,,,,,HIVECw62w,,385,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one cook_issues,K_14_cook_issues,,,,,,true,"not(selected(${K_2_shelter_situation},'no_shelter') or selected(${K_2_shelter_situation},'prefer_not_to_answer') or selected(${K_2_shelter_situation}, 'do_not_know') or selected(${K_2_shelter_situation}, ''))",,,,,,,,,rZXWtV4g3,,386,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one sleep_issues,K_15_sleep_issues,,,,,,true,"not(selected(${K_2_shelter_situation},'no_shelter') or selected(${K_2_shelter_situation},'prefer_not_to_answer') or selected(${K_2_shelter_situation}, 'do_not_know') or selected(${K_2_shelter_situation}, ''))",,,,,,,,,pE8qjAXhY,,387,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,note_cook_food_sleep,,,,,,false,"(
+  selected(${K_14_cook_issues}, 'yes') or selected(${K_15_sleep_issues}, 'yes')
+) and (
+  selected(${H_27_miss_nfi}, 'kitchen_set') or selected(${H_27_miss_nfi}, 'bedding_and_towels')
+)",,,,,,,,,ffCUMqEYw,,388,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one food_store_issues,K_16_food_store_issues,,,,,,true,"not(selected(${K_2_shelter_situation},'no_shelter') or selected(${K_2_shelter_situation},'prefer_not_to_answer') or selected(${K_2_shelter_situation}, 'do_not_know') or selected(${K_2_shelter_situation}, ''))",,,,,,,,,eGpn7oHUR,,389,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one heating_type,K_17_heating_type,,,,,,true,,,,,,,,,,ZzcA1FGyS,,390,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,K_17_1_heating_type_other,,,,,,true,"selected(${K_17_heating_type}, 'other')",,,,,,,,,0KRBLoBE6,,391,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one energy_lighting_source,K_18_energy_lighting_source,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer')) and (count-selected(.)>1))",,,,,,,,hVOsoCgus,,392,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,K_18_1_energy_lighting_source_other,,,,,,true,"selected(${K_18_energy_lighting_source}, 'other')",,,,,,,,,pSGUGXGoN,,393,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one electricity_issues,K_19_electricity_issues,,,,,,true,"not(selected(${K_2_shelter_situation},'no_shelter') or selected(${K_2_shelter_situation},'prefer_not_to_answer') or selected(${K_2_shelter_situation}, 'do_not_know') or selected(${K_2_shelter_situation}, ''))",,,,,,,,,ojT3Cah8W,,394,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,K_19_1_electricity_issues_other,,,,,,true,"selected(${K_19_electricity_issues}, 'other')",,,,,,,,,rSM6T3SIz,,395,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple utility_interrupt,K_20_utility_interrupt,,,,,,true,"not(selected(${K_2_shelter_situation},'no_shelter') or selected(${K_2_shelter_situation},'prefer_not_to_answer') or selected(${K_2_shelter_situation}, 'do_not_know') or selected(${K_2_shelter_situation}, ''))","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'no_other_interruptions_experienced')) and (count-selected(.)>1))",,,,,,,,mmgbK5XMy,,396,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,K_20_1_utility_interrupt_other,,,,,,true,"selected(${K_20_utility_interrupt}, 'other')",,,,,,,,,QCGb85nWm,,397,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one alt_energy,K_21_alt_energy,,,,,,true,"not(selected(${K_2_shelter_situation},'no_shelter') or selected(${K_2_shelter_situation},'prefer_not_to_answer') or selected(${K_2_shelter_situation}, 'do_not_know') or selected(${K_2_shelter_situation}, ''))",,,,,,,,,c6UpVO95Q,,398,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one internet_hours,K_22_internet_hours,,,,,,true,,,,,,,,,,niJLj6puq,,399,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,internet_note,,,,,,false,"selected(${K_20_utility_interrupt},'internet') and selected(${K_22_internet_hours},'always_24hrs')",,,,,,,,,EpACdDPCF,,400,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,group_snfi,,,,,,,,,,,,,,,,ihGH4VT6z,,401,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,group_wash,,,,,,,,,,,,,,,,XZfuVOgQT,,402,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,L_1_wash_intro,,,,,,false,,,,,,,,,,018zNlctR,,403,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one water_source,L_2_water_source,,,,,,true,,,,,,,,,,Gntpj4AlA,,404,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,L_2_1_water_source_other,,,,,,true,"selected(${L_2_water_source}, 'other')",,,,,,,,,vBTAsdziR,,405,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one water_fetch,L_3_0_water_fetch_int_yn,,,,,,true,"not(selected(${L_2_water_source},'tap_drinking_water_piped_into_dwelling') or selected(${L_2_water_source},'piped_into_compound_yard_or_plot') or selected(${L_2_water_source},'piped_to_neighbour') or selected(${L_2_water_source},'prefer_not_to_answer') or selected(${L_2_water_source}, 'do_not_know') or selected(${L_2_water_source}, ''))",,,,,,,,,b0ZgK8UOD,,406,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,L_3_water_fetch_int,,,,,,true,"selected(${L_3_0_water_fetch_int_yn}, 'can')",.>=0 and .<=600,,,,,,,,SfnXEW9yL,,407,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one water_range,L_4_water_range,,,,,,true,${L_3_0_water_fetch_int_yn}='do_not_know',,,,,,,,,Vsq9XUmzl,,408,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one water_assess,L_5_water_assess,,,,,,true,,,,,,,,,,dqA3grGGx,,409,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one water_treat,L_6_water_treat,,,,,,true,,,,,,,,,,arMvxrRWF,,410,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one water_lack,L_7_water_lack,,,,,,true,,,,,,,,,,eeZ3Vkv8G,,411,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one water_source_dom,L_8_water_source_dom,,,,,,true,,,,,,,,,,II7Gqkg6m,,412,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,L_8_1_water_source_dom_other,,,,,,true,"selected(${L_8_water_source_dom}, 'other')",,,,,,,,,M4WvxeTrw,,413,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one enough_water,L_9_enough_water,,,,,,true,,,,,,,,,,SVUxaBvoP,,414,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one hygiene_issues,L_10_hygiene_issues,,,,,,true,,,,,,,,,,TzXxpdAjd,,415,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one hand_washing,L_11_hand_washing,,,,,,true,,,,,,,,,,WRDXUw9OD,,416,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,L_11_1_hand_washing_other,,,,,,true,"selected(${L_11_hand_washing}, 'other')",,,,,,,,,YEwIMHmo9,,417,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one soap,L_12_soap,,,,,,true,,,,,,,,,,Tsj4Jeimz,,418,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,soap_note,,,,,,false,"selected(${L_10_hygiene_issues}, 'yes') and selected(${L_12_soap}, 'no')",,,,,,,,,IhJv7mUZT,,419,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one toilet,L_13_toilet,,,,,,true,,,,,,,,,,fiJijnVi1,,420,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,L_13_1_toilet_other,,,,,,true,"selected(${L_13_toilet}, 'other')",,,,,,,,,sz6Zkyy66,,421,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one shared_toilet,L_14_shared_toilet,,,,,,true,"not(selected(${L_13_toilet},'plastic_bag') or selected(${L_13_toilet},'bucket') or selected(${L_13_toilet},'no_facility_bush_field_open_defecation') or selected(${L_13_toilet},'prefer_not_to_answer') or selected(${L_13_toilet}, 'do_not_know') or selected(${L_13_toilet}, ''))",,,,,,,,,HvHEhCo3y,,422,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,shared_toilet_note,,,,,,false,"selected(${K_2_shelter_situation}, 'individual_shelter') and selected(${L_14_shared_toilet}, 'yes')",,,,,,,,,dMWU4EEfV,,423,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,L_15_0_shared_toilet_num_yn,,,,,,true,"selected(${L_14_shared_toilet}, 'yes')",,,,,,,,,evruc2k2a,,424,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,L_15_shared_toilet_num,,,,,,true,"selected(${L_15_0_shared_toilet_num_yn}, 'yes')",.>0 and .<40,,,,,,,,HaXitz6f2,,425,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one sewage_issues,L_16_sewage_issues,,,,,,true,"selected(${L_13_toilet},'flush_to_septic_tank') or selected(${L_13_toilet},'flush_to_pit_latrine') or selected(${L_13_toilet},'pit_latrine_with_slab') or selected(${L_13_toilet},'pit_latrine_without_slab_open_pit')",,,,,,,,,rGt5KwtA2,,426,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,L_16_1_sewage_issues_other,,,,,,true,"selected(${L_16_sewage_issues}, 'other')",,,,,,,,,R80ySlcjN,,427,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one wash_hands,L_17_wash_hands,,,,,,true,,,,,,,,,,J2ls6xMi4,,428,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,wash_hands_note,,,,,,false,"selected(${L_17_wash_hands}, 'rarely') or
+selected(${L_17_wash_hands}, 'somedays') or
+selected(${L_17_wash_hands}, 'often') or
+selected(${L_17_wash_hands}, 'always')
+and not(
+  selected(${K_20_utility_interrupt}, 'hot_water_supply') or
+  selected(${K_20_utility_interrupt}, 'cold_water_supply') or
+  selected(${L_9_enough_water}, 'rarely') or
+  selected(${L_9_enough_water}, 'somedays') or
+  selected(${L_9_enough_water}, 'often') or
+  selected(${L_9_enough_water}, 'always')
+)",,,,,,,,,q2okerMXJ,,429,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one wash_worry,L_18_wash_worry,,,,,,true,,,,,,,,,,pTTlHYWw5,,430,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,wah_worry_note,,,,,,false,"selected(${L_18_wash_worry}, 'rarely') or
+selected(${L_18_wash_worry}, 'somedays') or
+selected(${L_18_wash_worry}, 'often') or
+selected(${L_18_wash_worry}, 'always')
+and not(
+  selected(${K_20_utility_interrupt}, 'hot_water_supply') or
+  selected(${K_20_utility_interrupt}, 'cold_water_supply') or
+  selected(${L_9_enough_water}, 'rarely') or
+  selected(${L_9_enough_water}, 'somedays') or
+  selected(${L_9_enough_water}, 'often') or
+  selected(${L_9_enough_water}, 'always') or  selected(${L_7_water_lack}, 'rarely') or
+  selected(${L_7_water_lack}, 'somedays') or
+  selected(${L_7_water_lack}, 'often') or
+  selected(${L_7_water_lack}, 'always')
+)",,,,,,,,,JBTQgQbs9,,431,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one wash_plans,L_19_wash_plans,,,,,,true,,,,,,,,,,si0eQbjs4,,432,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,group_wash,,,,,,,,,,,,,,,,PZzwvsAeE,,433,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,group_fsc,,,,,,,,,,,,,,,,l0bN5MkCA,,434,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,M_1_I_1_fsc_intro,,,,,,false,,,,,,,,,,Cxlubg4nr,,435,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_2_fsl_fcs_cereal,,,,,,true,,.>=0 and .<=7,,,,,,,,XNS2jAw3B,,436,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,fsl_fcs_cereal_note,,,,,,false,${M_2_fsl_fcs_cereal} <6,,,,,,,,,Pzs0cyud2,,437,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_3_fsl_fcs_legumes,,,,,,true,,.>=0 and .<=7,,,,,,,,qhWOkqtgN,,438,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_4_fsl_fcs_dairy,,,,,,true,,.>=0 and .<=7,,,,,,,,6n6AiyUxP,,439,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,fsl_fcs_dairy_note,,,,,,false,${M_4_fsl_fcs_dairy} < 5,,,,,,,,,YleQXmjEx,,440,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_5_fsl_fcs_meat,,,,,,true,,.>=0 and .<=7,,,,,,,,bagKgU0m7,,441,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,fsl_fcs_meat_note,,,,,,,${M_5_fsl_fcs_meat} <6,,,,,,,,,8x6C1IDaz,,442,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_6_fsl_fcs_veg,,,,,,true,,.>=0 and .<=7,,,,,,,,n1j8oHRqx,,443,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_7_fsl_fcs_fruit,,,,,,true,,.>=0 and .<=7,,,,,,,,KPYGSWn4r,,444,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_8_fsl_fcs_oil,,,,,,true,,.>=0 and .<=7,,,,,,,,KrPEADk6y,,445,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_9_fsl_fcs_sugar,,,,,,true,,.>=0 and .<=7,,,,,,,,Q61sGEQIp,,446,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_10_fsl_fcs_condiments,,,,,,true,,.>=0 and .<=7,,,,,,,,7C1RXwDrT,,447,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,fsl_fcs_condiments_note,,,,,,,${M_10_fsl_fcs_condiments} < 7,,,,,,,,,QQhtp6Xkj,,448,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,M_11_rcsi_intro,,,,,,false,,,,,,,,,,qbktuiRuE,,449,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_12_fsl_rcsi_lessquality,,,,,,true,,.>=0 and .<=7,,,,,,,,j6aChV7xl,,450,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_13_fsl_rcsi_borrow,,,,,,true,,.>=0 and .<=7,,,,,,,,o00YxQ3HV,,451,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_14_fsl_rcsi_mealsize,,,,,,true,,.>=0 and .<=7,,,,,,,,6MoMuztHX,,452,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_15_fsl_rcsi_mealadult,,,,,,true,,.>=0 and .<=7,,,,,,,,O4AX29PeI,,453,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_16_fsl_rcsi_mealnb,,,,,,true,,.>=0 and .<=7,,,,,,,,KVhbnP72A,,454,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple own_prod_food,M_18_own_prod_food,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,TtvjfZq85,,455,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,M_18_1_own_prod_food_other,,,,,,true,"selected(${M_18_own_prod_food}, 'other')",,,,,,,,,ynjrHGdau,,456,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_20_0_cereals_yn,,,,,,true,,,,,,,,,,TLVqCCVuT,,457,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_20_cereals,,,,,,true,"selected(${M_20_0_cereals_yn}, 'yes')",.>=0,,,,,,,,ZT3Eg6pNW,,458,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_21_0_cereals_own_prod_val_yn,,,,,,true,"selected(${M_18_own_prod_food}, 'cereals_tubers_pulses')",,,,,,,,,ajhZl4X6G,,459,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_21_cereals_own_prod_val,,,,,,true,"selected(${M_21_0_cereals_own_prod_val_yn}, 'yes')",.>=0,,,,,,,,6gewXbfu8,,460,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_22_0_fruit_yn,,,,,,true,,,,,,,,,,c3n76OUSr,,461,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_22_fruit,,,,,,true,"selected(${M_22_0_fruit_yn}, 'yes')",.>=0,,,,,,,,pldhivPNo,,462,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_23_0_fruit_own_prod_val_yn,,,,,,true,"selected(${M_18_own_prod_food}, 'fruit_and_vegetables')",,,,,,,,,edoubWlpp,,463,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_23_fruit_own_prod_val,,,,,,true,"selected(${M_23_0_fruit_own_prod_val_yn}, 'yes')",.>=0,,,,,,,,7sQzCuF0v,,464,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_24_0_animal_product_yn,,,,,,true,,,,,,,,,,RiOyvxDGA,,465,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_24_animal_product,,,,,,true,"selected(${M_24_0_animal_product_yn}, 'yes')",.>=0,,,,,,,,9YvVUOalN,,466,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_25_0_animal_product_own_prod_val_yn,,,,,,true,"selected(${M_18_own_prod_food}, 'animal_products_meat_meat_products_&_fish_eggs_dairy')",,,,,,,,,JGyS1cxIo,,467,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_25_animal_product_own_prod_val,,,,,,true,"selected(${M_25_0_animal_product_own_prod_val_yn}, 'yes')",.>=0,,,,,,,,oHXco8pm0,,468,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_26_0_sugar_yn,,,,,,true,,,,,,,,,,oxobQGfqn,,469,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_26_sugar,,,,,,true,"selected(${M_26_0_sugar_yn}, 'yes')",.>=0,,,,,,,,7OdPgIQya,,470,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_27_0_sugar_own_prod_val_yn,,,,,,true,"selected(${M_18_own_prod_food}, 'sugar_sweets_oil_and_fats')",,,,,,,,,t3Q46HnOf,,471,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_27_sugar_own_prod_val,,,,,,true,"selected(${M_27_0_sugar_own_prod_val_yn}, 'yes')",.>=0,,,,,,,,of9WXmOCq,,472,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_28_0_bread_yn,,,,,,true,,,,,,,,,,btSh08EZr,,473,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_28_bread,,,,,,true,"selected(${M_28_0_bread_yn}, 'yes')",.>=0,,,,,,,,PQUWGVFHg,,474,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_29_0_bread_own_prod_val_yn,,,,,,true,"selected(${M_18_own_prod_food}, 'bread_and_flour')",,,,,,,,,5RqVkAemm,,475,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_29_bread_own_prod_val,,,,,,true,"selected(${M_29_0_bread_own_prod_val_yn}, 'yes')",.>=0,,,,,,,,W2wKMmt6Z,,476,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_30_0_water_yn,,,,,,true,,,,,,,,,,JaaBVpyxK,,477,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_30_water,,,,,,true,"selected(${M_30_0_water_yn}, 'yes')",.>=0,,,,,,,,yaA5kYry9,,478,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_31_0_outside_yn,,,,,,true,,,,,,,,,,8WtntLsxj,,479,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_31_outside,,,,,,true,"selected(${M_31_0_outside_yn}, 'yes')",.>=0,,,,,,,,V3mY3zfIP,,480,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_32_0_all_yn,,,,,,true,,,,,,,,,,Rn46mYCsN,,481,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_32_all,,,,,,true,"selected(${M_32_0_all_yn}, 'yes')",.>=0,,,,,,,,japxIsAwP,,482,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_33_0_other_own_prod_val_yn,,,,,,true,"selected(${M_18_own_prod_food}, 'other_food_production')",,,,,,,,,vsQo0isVm,,483,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_33_other_own_prod_val,,,,,,true,"selected(${M_33_0_other_own_prod_val_yn}, 'yes')",.>=0,,,,,,,,4V6uEquJK,,484,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_34_0_food_gifts_yn,,,,,,true,,,,,,,,,,9lehxqNby,,485,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_34_food_gifts,,,,,,true,"selected(${M_34_0_food_gifts_yn}, 'yes')",.>=0,,,,,,,,Le9EPDz71,,486,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yn,M_35_0_gifts_assistance_value_yn,,,,,,true,,,,,,,,,,BPnPiY6lC,,487,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,integer,M_35_gifts_assistance_value,,,,,,true,"selected(${M_35_0_gifts_assistance_value_yn}, 'yes')",.>=0,,,,,,,,QLdEcec9j,,488,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,group_fsc,,,,,,,,,,,,,,,,vPZKQrGG4,,489,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,group_aap,,,,,,,,,,,,,,,,9xLnGmhgJ,,490,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,N_1_aap_intro,,,,,,false,,,,,,,,,,5VxH99RKK,,491,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple aap_chall,N_2_aap_chall,,,,,,true,,"count-selected(.) <= 3 and not((selected(., 'do_not_know') or selected(., 'prefer_not_to_answer') or selected(., 'none')) and count-selected(.) > 1)",,,,,,,,Bi3MU7lGA,,492,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,N_2_1_aap_chall_other,,,,,,true,"selected(${N_2_aap_chall}, 'other')",,,,,,,,,6ymAW9bvx,,493,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple aap_support,N_3_aap_support,,,,,,true,"not(selected(${N_2_aap_chall},'none') or selected(${N_2_aap_chall},'prefer_not_to_answer') or selected(${N_2_aap_chall}, 'do_not_know') or selected(${N_2_aap_chall}, ''))","not(selected(., 'do_not_want_to_need_to_receive_any_support') and count-selected(.) > 1) and count-selected(.) <= 3",,,,,,,,Ubui9uYUr,,494,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,idp_support_note,,,,,,false,"${count_idp} = 0 and selected(${N_3_aap_support},'assistance_to_idps')",,,,,,,,,YKewWUFsu,,495,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,N_3_1_aap_support_other,,,,,,true,"selected(${N_3_aap_support}, 'other')",,,,,,,,,lGPNfCVrd,,496,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple preferred_aid,N_4_preferred_aid,,,,,,true,"not(selected(${N_2_aap_chall},'none') or selected(${N_2_aap_chall},'prefer_not_to_answer') or selected(${N_2_aap_chall}, 'do_not_know') or selected(${N_2_aap_chall}, '')) and not(selected(${N_3_aap_support},'do_not_want_to_need_to_receive_any_support') or selected(${N_3_aap_support}, ''))","not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer')  or selected(.,'do_not_want_to_receive_humanitarian_assistance')) and (count-selected(.)>1))",,,,,,,,8ez9KnKPu,,497,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,N_4_1_preferred_aid_other,,,,,,true,"selected(${N_4_preferred_aid}, 'other')",,,,,,,,,wLaC5lQzn,,498,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one last_aid,N_5_last_aid,,,,,,true,,,,,,,,,,ITlmBYuzI,,499,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple aid_barriers,N_6_aid_barriers,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or  selected(.,'no_no_barriers') or  selected(.,'did_not_attempt_to_receive_any_assistance_in_the_past_12_months')) and (count-selected(.)>1))",,,,,,,,tbJg9JLik,,500,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,N_6_1_aid_barriers_other,,,,,,true,"selected(${N_6_aid_barriers}, 'other')",,,,,,,,,EeITo8pKn,,501,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one aid_satisfaction,N_7_aid_satisfaction,,,,,,true,"not(selected(${N_5_last_aid},'more_than_12_months_ago') or selected(${N_5_last_aid},'never_receieved_aid') or selected(${N_5_last_aid}, 'do_not_know') or selected(${N_5_last_aid}, ''))",,,,,,,,,UE0afw0im,,502,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple aid_satisfaction_reason,N_8_aid_satisfaction_reason,,,,,,true,"selected(${N_7_aid_satisfaction}, 'dissatisfied') or selected(${N_7_aid_satisfaction}, 'very_dissatisfied')","not((selected(.,'prefer_not_to_answer') or selected(.,'do_not_know')) and (count-selected(.)>1))",,,,,,,,rmh3te4qL,,503,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,N_8_1_aid_satisfaction_reason_other,,,,,,true,"selected(${N_8_aid_satisfaction_reason}, 'other')",,,,,,,,,KzBXmbRFM,,504,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple channels_reliable,N_9_channels_reliable,,,,,,true,,"not((selected(.,'prefer_not_to_answer') or selected(.,'none') or selected(.,'do_not_know')) and (count-selected(.)>1))",,,,,,,,SCJqU4xAZ,,505,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,N_9_1_channels_reliable_other,,,,,,true,"selected(${N_9_channels_reliable}, 'other')",,,,,,,,,vm6uFokA2,,506,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple feedback_system,N_10_feedback_system,,,,,,true,,"not((selected(.,'prefer_not_to_answer') or selected(.,'none') or selected(.,'do_not_know') or selected(.,'no_system_used')) and (count-selected(.)>1))",,,,,,,,zUM1rRJqT,,507,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,N_10_1_feedback_system_other,,,,,,true,"selected(${N_10_feedback_system},'other')",,,,,,,,,IxXoknghZ,,508,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one feedback_response,N_11_feedback_response,,,,,,true,"not(selected(${N_10_feedback_system},'none') or selected(${N_10_feedback_system},'prefer_not_to_answer') or selected(${N_10_feedback_system}, 'do_not_know') or selected(${N_10_feedback_system}, ''))",,,,,,,,,7CKzlwvdf,,509,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple assistance_cuts,O_1_assistance_cuts,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'no')) and (count-selected(.)>1))",,,,,,,,OJUd4Vv2g,,510,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,O_1_1_assistance_cuts_other,,,,,,true,"selected(${O_1_assistance_cuts}, 'other')",,,,,,,,,jU6sZdTPd,,511,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple legal_assist,O_2_legal_assist,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,46S8m9sAW,,512,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,O_2_1_legal_assist_other,,,,,,true,"selected(${O_2_legal_assist}, 'other')",,,,,,,,,x4c4qEaMh,,513,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple social_admin_assist,O_3_social_admin_assist,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,YCjHu6DUT,,514,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,O_3_1_social_admin_assist_other,,,,,,true,"selected(${O_3_social_admin_assist}, 'other')",,,,,,,,,c33oojBGR,,515,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple services_women,O_5_services_women,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,lwLWkOiSi,,516,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,O_5_1_services_women_other,,,,,,true,"selected(${O_5_services_women}, 'other')",,,,,,,,,dgBGeiQBX,,517,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple services_children,O_6_services_children,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'none')) and (count-selected(.)>1))",,,,,,,,3dUUkmntO,,518,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,O_6_1_services_children_other,,,,,,true,"selected(${O_6_services_children}, 'other')",,,,,,,,,c6JwQA7B2,,519,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple prot_needs_2_activities,O_7_prot_needs_2_activities,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'no')) and (count-selected(.)>1))",,,,,,,,UeOw7P5xL,,520,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,O_7_1_prot_needs_2_activities_other,,,,,,true,"selected(${O_7_prot_needs_2_activities}, 'other')",,,,,,,,,oZT0C1exq,,521,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple prot_needs_2_social,O_8_prot_needs_2_social,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'no')) and (count-selected(.)>1))",,,,,,,,sXvDc8coK,,522,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,O_8_1_prot_needs_2_social_other,,,,,,true,"selected(${O_8_prot_needs_2_social}, 'other')",,,,,,,,,eSCaXsoUZ,,523,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_multiple prot_needs_3_movement,O_9_prot_needs_3_movement,,,,,,true,,"not((selected(.,'do_not_know') or selected(.,'prefer_not_to_answer') or selected(.,'no_there_have_been_no_changes_but_we_feel_unsafe_moving_in_the_community') or selected(.,'no_we_have_no_safety_concerns_when_moving_around_in_the_community')) and (count-selected(.)>1))",,,,,,,,chga89s4U,,524,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,O_9_1_prot_needs_3_movement_other,,,,,,true,"selected(${O_9_prot_needs_3_movement}, 'other')",,,,,,,,,3vayqGM8X,,525,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,group_aap,,,,,,,,,,,,,,,,AJouqcU0P,,526,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,group_contacts,,,,,,,,,,,,,,,,jLc9RglJr,,527,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one yes_no,P_6_referral,,,,,,true,,,,,,,,,,1mb52MdU3,,528,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,P_7_referral_link,,,,,,false,"selected(${P_6_referral}, 'yes')",,,,,,,,,qCEmUkTFM,,529,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one resp_phone_consent,P_1_resp_phone_consent,,,,,,true,"selected(${P_6_referral}, 'no')",,,,,,,,,IzHUEQ7Cc,,530,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,P_2_resp_phone,,,,,,true,"selected(${P_1_resp_phone_consent}, 'yes')","regex(.,'^\d{12}$')",380,,,,,,,Bmw4aEcln,,531,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,select_one refugee_research_consent,P_3_refugee_research_consent,,,,,,true,"selected(${F_14_refugee}, 'yes') and selected(${P_1_resp_phone_consent},'yes')",,,,,,,,,F8e6u2xFa,,532,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,calculate,P_3_1_end_real_time,,,,,once(now()),,${P_1_resp_phone_consent}!='',,,,,,,,,rX7FMSGlF,,533,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,P_4_cati_bye,,,,,,false,,,,,,,,,,c2q5kPo5X,,534,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,text,P_5_comment_enum,,,,,,true,,,,,,,multiline,,,L6KTpzPxb,,535,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,group_contacts,,,,,,,,,,,,,,,,vJnBsyyXs,,536,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,hohh_ok,,,,,,,,,,,,,,,,ovlH7gpJ6,,537,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,age_ok,,,,,,,,,,,,,,,,CcMqRZZ6j,,538,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,language_ok,,,,,,,,,,,,,,,,XsizloGvW,,539,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,location_ok,,,,,,,,,,,,,,,,GxrpJq9j7,,540,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,consent_ok,,,,,,,,,,,,,,,,yDnvEB22J,,541,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,begin_group,negative_farewell,,,,,,,"not(selected(${A_1_consent},'yes')) or selected(${A_2_2_raion},'raion_not_in_list') or selected(${A_2_1_oblast},'oblast_not_in_list') or (not(selected(${A_3_lang_standard},'ukrainian')) and not(selected(${A_3_lang_standard},'russian')) and not(selected(${A_4_lang_other},'yes_in_ukrainian')) and not(selected(${A_4_lang_other},'yes_in_russian'))) or (not(selected(${A_6_resp_hoh},'yes')) and not(selected(${A_7_resp_hoh_behalf},'yes'))) or ${A_5_resp_age}<18",,,,,,,,,XuJIKvJ12,,542,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,note,A_8_farewell_cati,,,,,,false,,,,,,,,,,iqquLr1hb,,543,hNTgnRf31uCmvw
+aCdzAaiGS5hAyMukmda6FW,UKR2502_MSNA_2025,end_group,negative_farewell,,,,,,,,,,,,,,,,Xg0NNQeXR,,544,hNTgnRf31uCmvw

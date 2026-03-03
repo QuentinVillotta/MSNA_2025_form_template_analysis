@@ -39,6 +39,19 @@ class TemplateLoader:
             # Remove unnamed columns created by pandas when reading Excel
             self._survey = self._survey.loc[:, ~self._survey.columns.str.startswith('Unnamed:')]
             
+            # NORMALIZE WHITESPACE IN QUESTION NAMES
+            # Strip leading/trailing whitespace to ensure consistent matching across all analysis
+            self._survey['name'] = self._survey['name'].apply(
+                lambda x: str(x).strip() if pd.notna(x) else x
+            )
+            self._choices['name'] = self._choices['name'].apply(
+                lambda x: str(x).strip() if pd.notna(x) else x
+            )
+            if 'list_name' in self._choices.columns:
+                self._choices['list_name'] = self._choices['list_name'].apply(
+                    lambda x: str(x).strip() if pd.notna(x) else x
+                )
+            
             logger.success(f"Template loaded: {len(self._survey)} survey rows, {len(self._choices)} choice rows")
         
         return self._survey.copy(), self._choices.copy()

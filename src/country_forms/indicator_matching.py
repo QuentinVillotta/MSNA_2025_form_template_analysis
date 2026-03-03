@@ -117,6 +117,7 @@ def generate_country_match_summary(
         uid = asset['uid']
         survey_name = asset['name']
         country_code = asset['country_code_settings']
+        submissions = asset['submission_count']
         
         # Get country indicators
         country_indicators = country_survey_df[
@@ -136,6 +137,7 @@ def generate_country_match_summary(
         row = {
             'survey_name': survey_name,
             'country_code': country_code,
+            'submissions': submissions,
             'theme': None,  # Will be used for groupby filtering
             'module': None,  # Will be used for groupby filtering
             'tier': None,  # Will be used for groupby filtering
